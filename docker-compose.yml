@@ -1,34 +1,43 @@
 version: '3.1'
 
 networks:
-  net:
+  zoom:
 
 services:
-  db:
+  postgres:
     image: postgres:alpine
     networks:
-      net:
+      zoom:
         aliases:
           - postgres
     ports:
       - 5432:5432
     env_file:
       - .env
+    # environment:
+    #   POSTGRES_USER:      desenv
+    #   POSTGRES_PASSWORD:  rapadura
+    #   POSTGRES_DB:        graphql
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   web:
-    image: web
+    image: graphql
     build: .
     ports:
       - 3000:3000
     env_file:
       - .env
     depends_on:
-      - db
-    links:
-      - db
+      - postgres
     volumes:
       - .:/var/app
     networks:
-      net:
+      zoom:
         aliases:
           - web
+
+volumes:
+  postgres_data:
+  zoom_nps_data:
+
