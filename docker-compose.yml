@@ -14,14 +14,12 @@ services:
       - 5432:5432
     env_file:
       - .env
-    # environment:
-    #   POSTGRES_USER:      desenv
-    #   POSTGRES_PASSWORD:  rapadura
-    #   POSTGRES_DB:        graphql
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   web:
+    tty: true
+    stdin_open: true
     image: graphql
     build: .
     ports:

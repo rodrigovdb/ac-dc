@@ -1,24 +1,59 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sample rails 7 + graphql based on [this post](https://www.apollographql.com/blog/community/backend/using-graphql-with-ruby-on-rails/)
 
-Things you may want to cover:
+## Models
 
-* Ruby version
+```ruby
+ActiveRecord::Schema[7.0].define(version: 20_220_701_190_725) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension 'plpgsql'
 
-* System dependencies
+  create_table 'artists', force: :cascade do |t|
+    t.string 'first_name'
+    t.string 'last_name'
+    t.string 'email'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+  end
 
-* Configuration
+  create_table 'items', force: :cascade do |t|
+    t.bigint 'artist_id', null: false
+    t.string 'title'
+    t.text 'description'
+    t.string 'image_url'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['artist_id'], name: 'index_items_on_artist_id'
+  end
 
-* Database creation
+  add_foreign_key 'items', 'artists'
+end
+```
 
-* Database initialization
+## Running
 
-* How to run the test suite
+```shell
+$ docker-compose build
+$ docker-compose up
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Querying
 
-* Deployment instructions
+Getting songs with artists
+```shell
+curl -g \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"query": "query { items { id title description artist { firstName lastName email fullName createdAt } } }"}' \
+  http://localhost:3000/graphql
+```
 
-* ...
+Getting all artists and the songs related
+```shell
+curl -g \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"query": "query { artists { id fullName email items { id title description imageUrl } } }"}' \
+  http://localhost:3000/graphql
+```

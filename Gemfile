@@ -8,6 +8,8 @@ ruby '3.0.3'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'bootsnap', require: false
 gem 'dotenv-rails'
+gem 'graphiql-rails'
+gem 'graphql', '~> 2.0'
 gem 'puma', '~> 5.0'
 gem 'rack-cors'
 gem 'rails', '~> 7.0.3'
@@ -40,6 +42,7 @@ group :development, :test do
   gem 'pry-nav'
   gem 'reek'
   gem 'rspec-rails'
+  gem 'rubocop-graphql', '~> 0.14.4'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'shoulda-matchers'

@@ -102,6 +102,10 @@ GEM
       i18n (>= 1.8.11, < 2)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    graphiql-rails (1.8.0)
+      railties
+      sprockets-rails
+    graphql (2.0.11)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
@@ -218,6 +222,8 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.18.0)
       parser (>= 3.1.1.0)
+    rubocop-graphql (0.14.4)
+      rubocop (>= 0.87, < 2)
     rubocop-rails (2.15.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
@@ -233,6 +239,13 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
+    sprockets (4.1.1)
+      concurrent-ruby (~> 1.0)
+      rack (> 1, < 3)
+    sprockets-rails (3.4.2)
+      actionpack (>= 5.2)
+      activesupport (>= 5.2)
+      sprockets (>= 3.0.0)
     sqlite3 (1.4.4)
     strscan (3.0.3)
     thor (1.2.1)
@@ -257,6 +270,8 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   faker
+  graphiql-rails
+  graphql (~> 2.0)
   pg
   pry
   pry-nav
@@ -265,6 +280,7 @@ DEPENDENCIES
   rails (~> 7.0.3)
   reek
   rspec-rails
+  rubocop-graphql (~> 0.14.4)
   rubocop-rails
   rubocop-rspec
   shoulda-matchers
