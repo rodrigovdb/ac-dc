@@ -58,3 +58,12 @@ curl -g \
   -d '{"query": "query { artists { id fullName email items { id title description imageUrl } } }"}' \
   http://localhost:3000/graphql
 ```
+
+Getting one artist and related songs
+```shell
+curl -g \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"query": "query { artist(id: 1) { id fullName email items { id title description imageUrl } } }"}' \
+  http://localhost:3000/graphql
+```

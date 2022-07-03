@@ -8,6 +8,7 @@ module Types
 
     field :artists, resolver: Resolvers::Artists, description: 'A list of artists'
     field :artist, resolver: Resolvers::Artist, description: 'An artist'
+    field :items, resolver: Resolvers::Items, description: 'A list of items'
     field :item, resolver: Resolvers::Item, description: 'An item'
   end
 end
