@@ -9,4 +9,3 @@ module Resolvers
     end
   end
 end
-
