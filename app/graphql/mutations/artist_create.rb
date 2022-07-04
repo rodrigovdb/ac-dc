@@ -7,9 +7,8 @@ module Mutations
     type Types::ArtistType
     null true
 
-    argument :first_name, String, required: true
-    argument :last_name, String, required: true
-    argument :email, String, required: true
+    argument :name, String, required: true
+    argument :email, String, required: false 
 
     def resolve(**params)
       artist = ::Artist.new(params)

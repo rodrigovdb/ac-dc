@@ -8,9 +8,8 @@ module Mutations
     null true
 
     argument :id, ID, required: true
-    argument :first_name, String, required: true
-    argument :last_name, String, required: true
-    argument :email, String, required: true
+    argument :name, String, required: true
+    argument :email, String, required: false
 
     def resolve(id:, **params)
       artist = ::Artist.find(id)
