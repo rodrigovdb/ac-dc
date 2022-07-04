@@ -67,3 +67,15 @@ curl -g \
   -d '{"query": "query { artist(id: 1) { id fullName email items { id title description imageUrl } } }"}' \
   http://localhost:3000/graphql
 ```
+
+# Developing
+
+## Generating a new entity
+
+```bash
+$ rails g model Album artist:references name:string cover_image:string
+$ rails g graphql:object album
+$ rails g graphql:mutation_create Album
+$ rails g graphql:mutation_update Album
+$ rails g graphql:mutation_delete Album
+```

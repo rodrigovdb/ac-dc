@@ -2,39 +2,33 @@
 
 require 'rails_helper'
 
-RSpec.describe Resolvers::Artist do
+RSpec.describe Resolvers::Album do
   subject(:response) { RailsGraphqlSchema.execute(query, context: context, variables: variables) }
 
   let(:query) do
     <<-QUERY
-      query Artist($id: ID)  {
-        artist(id: $id) {
+      query Album($id: ID)  {
+        album(id: $id) {
           id
           name
-          email
-          items {
-            id
-            title
-            description
-            imageUrl
-          }
+          coverImage
         }
       }
     QUERY
   end
   let(:context) { {} }
   let(:variables) { { id: id } }
-  let!(:artist) { create(:artist) }
-  let(:id) { artist.id }
+  let!(:album) { create(:album) }
+  let(:id) { album.id }
 
   context 'when id is valid' do
     it do
       expect(response.to_h).to include(
         'data' => including(
-          'artist' => including(
-            'id' => artist.id.to_s,
-            'name' => artist.name,
-            'email' => artist.email
+          'album' => including(
+            'id' => album.id.to_s,
+            'name' => album.name,
+            'coverImage' => album.cover_image
           )
         )
       )
@@ -49,7 +43,7 @@ RSpec.describe Resolvers::Artist do
         'data' => nil,
         'errors' => including(
           including(
-            'message' => 'Artist not found'
+            'message' => 'Album not found'
           )
         )
       )

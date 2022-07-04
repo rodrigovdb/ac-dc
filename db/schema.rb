@@ -15,31 +15,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_04_010719) do
   enable_extension "plpgsql"
 
   create_table "albums", force: :cascade do |t|
-    t.bigint "artist_id", null: false
     t.string "name"
     t.string "cover_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_albums_on_artist_id"
   end
 
-  create_table "artists", force: :cascade do |t|
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
-  end
-
-  create_table "items", force: :cascade do |t|
-    t.bigint "artist_id", null: false
-    t.string "title"
-    t.text "description"
-    t.string "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_items_on_artist_id"
-  end
-
-  add_foreign_key "albums", "artists"
-  add_foreign_key "items", "artists"
 end

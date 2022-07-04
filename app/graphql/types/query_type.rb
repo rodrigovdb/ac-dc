@@ -6,9 +6,7 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    field :artists, resolver: Resolvers::Artists, description: 'A list of artists'
-    field :artist, resolver: Resolvers::Artist, description: 'An artist'
-    field :items, resolver: Resolvers::Items, description: 'A list of items'
-    field :item, resolver: Resolvers::Item, description: 'An item'
+    field :albums, resolver: Resolvers::Albums, description: 'A list of albums'
+    field :album, resolver: Resolvers::Album, description: 'An album'
   end
 end

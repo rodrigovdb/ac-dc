@@ -2,8 +2,8 @@
 
 module Types
   class MutationType < Types::BaseObject
-    field :artist_create, mutation: Mutations::ArtistCreate
-    field :artist_update, mutation: Mutations::ArtistUpdate
-    field :artist_delete, mutation: Mutations::ArtistDelete
+    field :album_create, mutation: Mutations::AlbumCreate
+    field :album_update, mutation: Mutations::AlbumUpdate
+    field :album_delete, mutation: Mutations::AlbumDelete
   end
 end

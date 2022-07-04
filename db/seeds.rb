@@ -8,39 +8,203 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-if Artist.count.zero?
-  taylor = Artist.create!(
-    email: 'taylor.swift@example.com',
-    first_name: 'Taylor',
-    last_name: 'Swift'
-  )
+if Album.count.zero?
+  album_01 = Album.create(name: 'High Voltage', cover_image: 'https://upload.wikimedia.org/wikipedia/en/f/fc/Acdc_high_voltage_international_album.jpg')
+  Song.create(album: album_01, name: "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)")
+  Song.create(album: album_01, name: "Rock 'n' Roll Singer")
+  Song.create(album: album_01, name: "The Jack")
+  Song.create(album: album_01, name: "Live Wire")
+  Song.create(album: album_01, name: "T.N.T.")
+  Song.create(album: album_01, name: "Can I Sit Next to You Girl")
+  Song.create(album: album_01, name: "Little Lover")
+  Song.create(album: album_01, name: "She's Got Balls")
+  Song.create(album: album_01, name: "High Voltage")
 
-  Item.create!(
-    [
-      {
-        title: "Red (Taylor's Version)",
-        description: 'Loving him is like driving a new Maserati down a dead-end street...',
-        artist: taylor,
-        image_url: 'https://static.wikia.nocookie.net/taylor-swift/images/9/93/Red_%28Taylor%27s_Version%29.jpeg/revision/latest/scale-to-width-down/1000?cb=20210618181243'
-      },
-      {
-        title: "All Too Well (Taylor's Version)",
-        description: 'It was rare, I was there, I remember it all too well',
-        artist: taylor,
-        image_url: 'https://static.wikia.nocookie.net/taylor-swift/images/9/93/Red_%28Taylor%27s_Version%29.jpeg/revision/latest/scale-to-width-down/1000?cb=20210618181243'
-      },
-      {
-        title: "We Are Never Ever Getting Back Together (Taylor's Version)",
-        description: 'You go talk to your friends, talk to my friends, talk to me',
-        artist: taylor,
-        image_url: 'https://static.wikia.nocookie.net/taylor-swift/images/9/93/Red_%28Taylor%27s_Version%29.jpeg/revision/latest/scale-to-width-down/1000?cb=20210618181243'
-      },
-      {
-        title: "Begin Again (Taylor's Version)",
-        description: 'But on a Wednesday in a café, I watched it begin again',
-        artist: taylor,
-        image_url: 'https://static.wikia.nocookie.net/taylor-swift/images/9/93/Red_%28Taylor%27s_Version%29.jpeg/revision/latest/scale-to-width-down/1000?cb=20210618181243'
-      }
-    ]
-  )
+  album_02 = Album.create(name: 'Dirty Deeds Done Dirt Cheap', cover_image: 'https://upload.wikimedia.org/wikipedia/en/5/51/Dirty_Deeds_Done_Dirt_Cheap_%28ACDC_album_-_cover_art0.jpg')
+  Song.create(album: album_02, name: "Dirty Deeds Done Dirt Cheap")
+  Song.create(album: album_02, name: "Love at First Feel")
+  Song.create(album: album_02, name: "Big Balls")
+  Song.create(album: album_02, name: "Rocker")
+  Song.create(album: album_02, name: "Problem Child")
+  Song.create(album: album_02, name: "There's Gonna Be Some Rockin'")
+  Song.create(album: album_02, name: "Ain't No Fun (Waiting 'Round to Be a Millionaire)")
+  Song.create(album: album_02, name: "Ride On")
+  Song.create(album: album_02, name: "Squealer")
+
+  album_03 = Album.create(artist, name: 'Let There Be Rock', cover_image: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/ACDC-LetThereBeRock.jpg/220px-ACDC-LetThereBeRock.jpg')
+  Song.create(album: album_03, name: "Go Down")
+  Song.create(album: album_03, name: "Dog Eat Dog")
+  Song.create(album: album_03, name: "Let There Be Rock")
+  Song.create(album: album_03, name: "Bad Boy Boogie")
+  Song.create(album: album_03, name: "Problem Child")
+  Song.create(album: album_03, name: "Overdose")
+  Song.create(album: album_03, name: "Hell Ain't a Bad Place to Be")
+  Song.create(album: album_03, name: "Whole Lotta Rosie")
+
+  album_04 = Album.create(name: 'Powerage', cover_image: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/de/Acdc_Powerage.JPG/220px-Acdc_Powerage.JPG')
+  Song.create(album: album_04, name: "Rock 'n' Roll Damnation")
+  Song.create(album: album_04, name: "Down Payment Blues")
+  Song.create(album: album_04, name: "Gimme a Bullet")
+  Song.create(album: album_04, name: "Riff Raff")
+  Song.create(album: album_04, name: "Sin City")
+  Song.create(album: album_04, name: "What's Next to the Moon")
+  Song.create(album: album_04, name: "Gone Shootin'")
+  Song.create(album: album_04, name: "Up to My Neck in You")
+  Song.create(album: album_04, name: "Kicked in the Teeth")
+
+  album_05 = Album.create(name: 'Highway to Hell', cover_image: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ac/Acdc_Highway_to_Hell.JPG/220px-Acdc_Highway_to_Hell.JPG')
+  Song.create(album: album_05, name: "Highway to Hell")
+  Song.create(album: album_05, name: "Girls Got Rhythm")
+  Song.create(album: album_05, name: "Walk All Over You")
+  Song.create(album: album_05, name: "Touch Too Much")
+  Song.create(album: album_05, name: "Beating Around the Bush")
+  Song.create(album: album_05, name: "Shot Down in Flames")
+  Song.create(album: album_05, name: "Get It Hot")
+  Song.create(album: album_05, name: "If You Want Blood (You've Got It)")
+  Song.create(album: album_05, name: "Love Hungry Man")
+  Song.create(album: album_05, name: "Night Prowler")
+
+  album_06 = Album.create(name: 'Back in Black', cover_image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/ACDC_Back_in_Black_cover.svg/220px-ACDC_Back_in_Black_cover.svg.png')
+  Song.create(album: album_06, name: "Hells Bells")
+  Song.create(album: album_06, name: "Shoot to Thrill")
+  Song.create(album: album_06, name: "What Do You Do for Money Honey")
+  Song.create(album: album_06, name: "Given the Dog a Bone")
+  Song.create(album: album_06, name: "Let Me Put My Love into You")
+  Song.create(album: album_06, name: "Back in Black")
+  Song.create(album: album_06, name: "You Shook Me All Night Long")
+  Song.create(album: album_06, name: "Have a Drink on Me")
+  Song.create(album: album_06, name: "Shake a Leg")
+  Song.create(album: album_06, name: "Rock and Roll Ain't Noise Pollution")
+
+  album_07 = Album.create(name: 'For Those About to Rock We Salute You', cover_image: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5c/ForThoseAboutToRock_ACDCalbum.jpg/220px-ForThoseAboutToRock_ACDCalbum.jpg')
+  Song.create(album: album_07, name: "For Those About to Rock (We Salute You)")
+  Song.create(album: album_07, name: "Put the Finger on You")
+  Song.create(album: album_07, name: "Let's Get It Up")
+  Song.create(album: album_07, name: "Inject the Venom")
+  Song.create(album: album_07, name: "Snowballed")
+  Song.create(album: album_07, name: "Evil Walks")
+  Song.create(album: album_07, name: "C.O.D.")
+  Song.create(album: album_07, name: "Breaking the Rules")
+  Song.create(album: album_07, name: "Night of the Long Knives")
+  Song.create(album: album_07, name: "Spellbound")
+
+  album_08 = Album.create(name: 'Flick of the Switch', cover_image: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8d/Ac-dc_Flick_of_the_Switch.JPG/220px-Ac-dc_Flick_of_the_Switch.JPG')
+  Song.create(album: album_08, name: "Rising Power")
+  Song.create(album: album_08, name: "This House Is on Fire")
+  Song.create(album: album_08, name: "Flick of the Switch")
+  Song.create(album: album_08, name: "Nervous Shakedown")
+  Song.create(album: album_08, name: "Landslide")
+  Song.create(album: album_08, name: "Guns for Hire")
+  Song.create(album: album_08, name: "Deep in the Hole")
+  Song.create(album: album_08, name: "Bedlam in Belgium")
+  Song.create(album: album_08, name: "Badlands")
+  Song.create(album: album_08, name: "Brain Shake")
+
+  album_09 = Album.create(name: 'Fly on the Wall', cover_image: 'https://upload.wikimedia.org/wikipedia/en/thumb/0/09/Fly_On_The_Wall.jpg/220px-Fly_On_The_Wall.jpg')
+  Song.create(album: album_09, name: "Fly on the Wall")
+  Song.create(album: album_09, name: "Shake Your Foundations")
+  Song.create(album: album_09, name: "First Blood")
+  Song.create(album: album_09, name: "Danger")
+  Song.create(album: album_09, name: "Sink the Pink")
+  Song.create(album: album_09, name: "Playing with Girls")
+  Song.create(album: album_09, name: "Stand Up")
+  Song.create(album: album_09, name: "Hell or High Water")
+  Song.create(album: album_09, name: "Back in Business")
+  Song.create(album: album_09, name: "Send for the Man")
+
+  album_10 = Album.create(name: 'Blow Up Your Video', cover_image: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Blowupyourvideo.jpg/220px-Blowupyourvideo.jpg')
+  Song.create(album: album_10, name: "Heatseeker")
+  Song.create(album: album_10, name: "That's the Way I Wanna Rock 'n' Roll")
+  Song.create(album: album_10, name: "Meanstreak")
+  Song.create(album: album_10, name: "Go Zone")
+  Song.create(album: album_10, name: "Kissin' Dynamite")
+  Song.create(album: album_10, name: "Nick of Time")
+  Song.create(album: album_10, name: "Some Sin for Nuthin'")
+  Song.create(album: album_10, name: "Ruff Stuff")
+  Song.create(album: album_10, name: "Two's Up")
+  Song.create(album: album_10, name: "This Means War")
+
+  album_11 = Album.create(name: 'The Razors Edge', cover_image: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a8/Razorsedge.jpg/220px-Razorsedge.jpg')
+  Song.create(album: album_11, name: "Thunderstruck")
+  Song.create(album: album_11, name: "Fire Your Guns")
+  Song.create(album: album_11, name: "Moneytalks")
+  Song.create(album: album_11, name: "The Razors Edge")
+  Song.create(album: album_11, name: "Mistress for Christmas")
+  Song.create(album: album_11, name: "Rock Your Heart Out")
+  Song.create(album: album_11, name: "Are You Ready")
+  Song.create(album: album_11, name: "Got You by the Balls")
+  Song.create(album: album_11, name: "Shot of Love")
+  Song.create(album: album_11, name: "Let's Make It")
+  Song.create(album: album_11, name: "Goodbye & Good Riddance to Bad Luck")
+  Song.create(album: album_11, name: "If You Dare")
+
+  album_12 = Album.create(name: 'Ballbreaker', cover_image: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Ballbreaker.jpg/220px-Ballbreaker.jpg')
+  Song.create(album: album_12, name: "Hard as a Ro	ck")
+  Song.create(album: album_12, name: "The Furor")
+  Song.create(album: album_12, name: "Boogie Man")
+  Song.create(album: album_12, name: "The Honey Roll")
+  Song.create(album: album_12, name: "Burnin' Alive")
+  Song.create(album: album_12, name: "Hail Caesar")
+  Song.create(album: album_12, name: "Love Bomb")
+  Song.create(album: album_12, name: "Caught with Your Pants Down")
+  Song.create(album: album_12, name: "Whiskey on the Rocks")
+  Song.create(album: album_12, name: "Ballbreaker")
+
+  album_13 = Album.create(name: 'Stiff Upper Lip', cover_image: 'https://upload.wikimedia.org/wikipedia/en/thumb/0/09/Stiff_Upper_Lip.jpg/220px-Stiff_Upper_Lip.jpg')
+  Song.create(album: album_13, name: "Stiff Upper Lip")
+  Song.create(album: album_13, name: "Meltdown")
+  Song.create(album: album_13, name: "House of Jazz")
+  Song.create(album: album_13, name: "Hold Me Back")
+  Song.create(album: album_13, name: "Safe in New York City")
+  Song.create(album: album_13, name: "Can't Stand Still")
+  Song.create(album: album_13, name: "Can't Stop Rock 'n' Roll")
+  Song.create(album: album_13, name: "Satellite Blues")
+  Song.create(album: album_13, name: "Damned")
+  Song.create(album: album_13, name: "Come and Get It")
+  Song.create(album: album_13, name: "All Screwed Up")
+  Song.create(album: album_13, name: "Give It Up")
+
+  album_14 = Album.create(name: 'Black Ice', cover_image: 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3e/Black_ice_red.jpg/220px-Black_ice_red.jpg')
+  Song.create(album: album_14, name: "Rock 'n' Roll Train")
+  Song.create(album: album_14, name: "Skies on Fire")
+  Song.create(album: album_14, name: "Big Jack")
+  Song.create(album: album_14, name: "Anything Goes")
+  Song.create(album: album_14, name: "War Machine")
+  Song.create(album: album_14, name: "Smash 'n' Grab")
+  Song.create(album: album_14, name: "Spoilin' for a Fight")
+  Song.create(album: album_14, name: "Wheels")
+  Song.create(album: album_14, name: "Decibel")
+  Song.create(album: album_14, name: "Stormy May Day")
+  Song.create(album: album_14, name: "She Likes Rock 'n' Roll")
+  Song.create(album: album_14, name: "Money Made")
+  Song.create(album: album_14, name: "Rock 'n' Roll Dream")
+  Song.create(album: album_14, name: "Rocking All the Way")
+  Song.create(album: album_14, name: "Black Ice")
+
+  album_15 = Album.create(name: 'Rock or Bust', cover_image: 'https://upload.wikimedia.org/wikipedia/en/thumb/7/7f/Rock_or_Bust.jpg/220px-Rock_or_Bust.jpg')
+  Song.create(album: album_15, name: "Rock or Bust")
+  Song.create(album: album_15, name: "Play Ball")
+  Song.create(album: album_15, name: "Rock the Blues Away")
+  Song.create(album: album_15, name: "Miss Adventure")
+  Song.create(album: album_15, name: "Dogs of War")
+  Song.create(album: album_15, name: "Got Some Rock & Roll Thunder")
+  Song.create(album: album_15, name: "Hard Times")
+  Song.create(album: album_15, name: "Baptism by Fire")
+  Song.create(album: album_15, name: "Rock the House")
+  Song.create(album: album_15, name: "Sweet Candy")
+  Song.create(album: album_15, name: "Emission Control")
+
+  album_16 = Album.create(name: 'Power Up', cover_image: 'https://upload.wikimedia.org/wikipedia/en/thumb/4/4f/ACDCPowerUp.jpg/220px-ACDCPowerUp.jpg')
+  Song.create(album: album_16, name: "Realize")
+  Song.create(album: album_16, name: "Rejection")
+  Song.create(album: album_16, name: "Shot in the Dark")
+  Song.create(album: album_16, name: "Through the Mists of Time")
+  Song.create(album: album_16, name: "Kick You When You're Down")
+  Song.create(album: album_16, name: "Witch's Spell")
+  Song.create(album: album_16, name: "Demon Fire")
+  Song.create(album: album_16, name: "Wild Reputation")
+  Song.create(album: album_16, name: "No Man's Land")
+  Song.create(album: album_16, name: "Systems Down")
+  Song.create(album: album_16, name: "Money Shot")
+  Song.create(album: album_16, name: "Code Red")
 end
