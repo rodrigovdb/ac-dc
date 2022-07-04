@@ -24,12 +24,10 @@ RSpec.describe Resolvers::Artists do
   let(:name) { Faker::Name.name }
   let(:email) { Faker::Internet.free_email(name: name) }
   let(:variables) do
-    Hash[
-      name: name,
-      email: email
-    ]
+    { name: name,
+      email: email }
   end
-  let(:context) { Hash[] }
+  let(:context) { {} }
 
   context 'when params are valid' do
     it do

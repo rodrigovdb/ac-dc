@@ -19,7 +19,7 @@ RSpec.describe Resolvers::Artists do
     QUERY
   end
   let(:variables) { { id: id } }
-  let(:context) { Hash[] }
+  let(:context) { {} }
   let!(:artist) { create(:artist) }
   let(:id) { artist.id }
 

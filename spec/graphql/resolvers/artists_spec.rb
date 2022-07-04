@@ -16,19 +16,17 @@ RSpec.describe Resolvers::Artists do
       }
     QUERY
   end
-  let(:context) { Hash[] }
-  let(:variables) { Hash[] }
+  let(:context) { {} }
+  let(:variables) { {} }
   let!(:artists) { create_list(:artist, 10) }
 
   it do
     expect(response.to_h).to include(
       'data' => including(
         'artists' => artists.map do |artist|
-          Hash[
-            'id' => artist.id.to_s,
+          { 'id' => artist.id.to_s,
             'name' => artist.name,
-            'email' => artist.email
-          ]
+            'email' => artist.email }
         end
       )
     )

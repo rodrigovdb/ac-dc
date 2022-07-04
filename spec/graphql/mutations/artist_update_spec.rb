@@ -23,13 +23,11 @@ RSpec.describe Resolvers::Artists do
     QUERY
   end
   let(:variables) do
-    Hash[
-      id: id,
+    { id: id,
       name: name,
-      email: email
-    ]
+      email: email }
   end
-  let(:context) { Hash[] }
+  let(:context) { {} }
   let(:artist) { create(:artist) }
   let(:artist_attributes) { attributes_for(:artist) }
   let(:id) { artist.id }

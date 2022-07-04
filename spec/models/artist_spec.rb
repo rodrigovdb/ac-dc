@@ -13,5 +13,6 @@ RSpec.describe Artist, type: :model do
 
   describe 'relationships' do
     it { is_expected.to have_many(:items) }
+    it { is_expected.to have_many(:albums) }
   end
 end
