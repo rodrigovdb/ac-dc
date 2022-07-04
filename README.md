@@ -5,29 +5,26 @@ Sample rails 7 + graphql based on [this post](https://www.apollographql.com/blog
 ## Models
 
 ```ruby
-ActiveRecord::Schema[7.0].define(version: 20_220_701_190_725) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_04_143914) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'artists', force: :cascade do |t|
-    t.string 'first_name'
-    t.string 'last_name'
-    t.string 'email'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "albums", force: :cascade do |t|
+    t.string "name"
+    t.string "cover_image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'items', force: :cascade do |t|
-    t.bigint 'artist_id', null: false
-    t.string 'title'
-    t.text 'description'
-    t.string 'image_url'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['artist_id'], name: 'index_items_on_artist_id'
+  create_table "songs", force: :cascade do |t|
+    t.bigint "album_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_songs_on_album_id"
   end
 
-  add_foreign_key 'items', 'artists'
+  add_foreign_key "songs", "albums"
 end
 ```
 
@@ -36,35 +33,36 @@ end
 ```shell
 $ cp .env_sample .env
 $ docker-compose build
+$ docker-compose run --rm web rake db:create db:migrate db:seed
 $ docker-compose up
 ```
 
 ## Querying
 
-Getting songs with artists
+Getting all albums
 ```shell
 curl -g \
   -X POST \
   -H "Content-Type: application/json" \
-  -d '{"query": "query { items { id title description artist { firstName lastName email fullName createdAt } } }"}' \
+  -d '{"query": "query { albums { id name coverImage } }"}' \
   http://localhost:3000/graphql
 ```
 
-Getting all artists and the songs related
+Getting one album with all songs
 ```shell
 curl -g \
   -X POST \
   -H "Content-Type: application/json" \
-  -d '{"query": "query { artists { id fullName email items { id title description imageUrl } } }"}' \
+  -d '{"query": "query { album(id: 5) { id name coverImage songs { id name } } }"}' \
   http://localhost:3000/graphql
 ```
 
-Getting one artist and related songs
+Getting one song with album information
 ```shell
 curl -g \
   -X POST \
   -H "Content-Type: application/json" \
-  -d '{"query": "query { artist(id: 1) { id fullName email items { id title description imageUrl } } }"}' \
+  -d '{"query": "query { song(id: 100) { id name album { id name coverImage } } }"}' \
   http://localhost:3000/graphql
 ```
 
