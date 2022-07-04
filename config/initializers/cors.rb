@@ -6,7 +6,14 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
-# Rails.application.config.middleware.insert_before 0, Rack::Cors do
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  allow do
+    origins '*'
+    resource '/graphql/*',
+      methods: %i[post],
+      headers: :any
+  end
+
 #   allow do
 #     origins "example.com"
 #
@@ -14,4 +21,4 @@
 #       headers: :any,
 #       methods: [:get, :post, :put, :patch, :delete, :options, :head]
 #   end
-# end
+end
