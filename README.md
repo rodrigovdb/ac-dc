@@ -1,6 +1,6 @@
 # README
 
-Sample rails 7 + graphql based on [this post](https://www.apollographql.com/blog/community/backend/using-graphql-with-ruby-on-rails/)
+This is an API written with Rails + GraphQL that returns all AC/DC albums and their songs.
 
 ## Models
 
