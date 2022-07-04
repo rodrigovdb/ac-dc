@@ -13,7 +13,6 @@ gem 'graphql', '~> 2.0'
 gem 'puma', '~> 5.0'
 gem 'rack-cors'
 gem 'rails', '~> 7.0.3'
-gem 'sqlite3', '~> 1.4'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
