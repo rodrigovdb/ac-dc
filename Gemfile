@@ -10,6 +10,7 @@ gem 'bootsnap', require: false
 gem 'dotenv-rails'
 gem 'graphiql-rails'
 gem 'graphql', '~> 2.0'
+gem 'pg'
 gem 'puma', '~> 5.0'
 gem 'rack-cors'
 gem 'rails', '~> 7.0.3'
@@ -36,7 +37,6 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'pg'
   gem 'pry'
   gem 'pry-nav'
   gem 'reek'
