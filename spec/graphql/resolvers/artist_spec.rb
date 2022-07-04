@@ -2,24 +2,28 @@
 
 require 'rails_helper'
 
-RSpec.describe Resolvers::Artists do
+RSpec.describe Resolvers::Artist do
   subject(:response) { RailsGraphqlSchema.execute(query, context: context, variables: variables) }
 
   let(:query) do
     <<-QUERY
-      mutation ArtistDelete($id: ID!){
-        artistDelete(
-          input: {
-            id: $id
-          }
-        ) {
+      query Artist($id: ID)  {
+        artist(id: $id) {
           id
+          name
+          email
+          items {
+            id
+            title
+            description
+            imageUrl
+          }
         }
       }
     QUERY
   end
-  let(:variables) { { id: id } }
   let(:context) { Hash[] }
+  let(:variables) { { id: id } }
   let!(:artist) { create(:artist) }
   let(:id) { artist.id }
 
@@ -27,15 +31,13 @@ RSpec.describe Resolvers::Artists do
     it do
       expect(response.to_h).to include(
         'data' => including(
-          'artistDelete' => including(
-            'id' => kind_of(String)
+          'artist' => including(
+            'id' => artist.id.to_s,
+            'name' => artist.name,
+            'email' => artist.email
           )
         )
       )
-    end
-
-    it do
-      expect { response }.to change { Artist.count }.from(1).to(0)
     end
   end
 
@@ -44,9 +46,7 @@ RSpec.describe Resolvers::Artists do
 
     it do
       expect(response.to_h).to include(
-        'data' => including(
-          'artistDelete' => nil
-        ),
+        'data' => nil,
         'errors' => including(
           including(
             'message' => 'Artist not found'

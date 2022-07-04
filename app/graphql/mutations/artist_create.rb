@@ -8,7 +8,7 @@ module Mutations
     null true
 
     argument :name, String, required: true
-    argument :email, String, required: false 
+    argument :email, String, required: false
 
     def resolve(**params)
       artist = ::Artist.new(params)

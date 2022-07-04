@@ -31,19 +31,41 @@ RSpec.describe Resolvers::Artists do
   end
   let(:context) { Hash[] }
 
-  it do
-    expect(response.to_h).to include(
-      'data' => including(
-        'artistCreate' => including(
-          'id' => kind_of(String),
-          'name' => name,
-          'email' => email
+  context 'when params are valid' do
+    it do
+      expect(response.to_h).to include(
+        'data' => including(
+          'artistCreate' => including(
+            'id' => kind_of(String),
+            'name' => name,
+            'email' => email
+          )
         )
       )
-    )
+    end
+
+    it do
+      expect { response }.to change { Artist.count }.by(1)
+    end
   end
 
-  it do
-    expect { response }.to change { Artist.count }.by(1)
+  context 'when params are invalid' do
+    let(:existent_artist) { create(:artist) }
+    let(:email) { existent_artist.email }
+
+    it do
+      expect(response.to_h).to include(
+        'errors' => including(
+          including(
+            'message' => 'Error creating artist',
+            'extensions' => including(
+              'email' => including(
+                'has already been taken'
+              )
+            )
+          )
+        )
+      )
+    end
   end
 end
