@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Resolvers::Albums do
+RSpec.describe Mutations::AlbumUpdate do
   subject(:response) { RailsGraphqlSchema.execute(query, context: context, variables: variables) }
 
   let(:query) do

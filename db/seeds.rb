@@ -31,7 +31,7 @@ if Album.count.zero?
   Song.create(album: album_02, name: "Ride On")
   Song.create(album: album_02, name: "Squealer")
 
-  album_03 = Album.create(artist, name: 'Let There Be Rock', cover_image: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/ACDC-LetThereBeRock.jpg/220px-ACDC-LetThereBeRock.jpg')
+  album_03 = Album.create(name: 'Let There Be Rock', cover_image: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/ACDC-LetThereBeRock.jpg/220px-ACDC-LetThereBeRock.jpg')
   Song.create(album: album_03, name: "Go Down")
   Song.create(album: album_03, name: "Dog Eat Dog")
   Song.create(album: album_03, name: "Let There Be Rock")

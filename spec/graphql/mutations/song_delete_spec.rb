@@ -2,13 +2,13 @@
 
 require 'rails_helper'
 
-RSpec.describe Mutations::AlbumDelete do
+RSpec.describe Mutations::SongDelete do
   subject(:response) { RailsGraphqlSchema.execute(query, context: context, variables: variables) }
 
   let(:query) do
     <<-QUERY
-      mutation AlbumDelete($id: ID!){
-        albumDelete(
+      mutation SongDelete($id: ID!){
+        songDelete(
           input: {
             id: $id
           }
@@ -20,14 +20,14 @@ RSpec.describe Mutations::AlbumDelete do
   end
   let(:variables) { { id: id } }
   let(:context) { {} }
-  let!(:album) { create(:album) }
-  let(:id) { album.id }
+  let!(:song) { create(:song) }
+  let(:id) { song.id }
 
   context 'when id is valid' do
     it do
       expect(response.to_h).to include(
         'data' => including(
-          'albumDelete' => including(
+          'songDelete' => including(
             'id' => kind_of(String)
           )
         )
@@ -35,7 +35,7 @@ RSpec.describe Mutations::AlbumDelete do
     end
 
     it do
-      expect { response }.to change { Album.count }.from(1).to(0)
+      expect { response }.to change { Song.count }.from(1).to(0)
     end
   end
 
@@ -45,11 +45,11 @@ RSpec.describe Mutations::AlbumDelete do
     it do
       expect(response.to_h).to include(
         'data' => including(
-          'albumDelete' => nil
+          'songDelete' => nil
         ),
         'errors' => including(
           including(
-            'message' => 'Album not found'
+            'message' => 'Song not found'
           )
         )
       )

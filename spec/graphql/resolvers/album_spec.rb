@@ -12,13 +12,18 @@ RSpec.describe Resolvers::Album do
           id
           name
           coverImage
+          songs {
+            id
+            name
+          }
         }
       }
     QUERY
   end
   let(:context) { {} }
   let(:variables) { { id: id } }
-  let!(:album) { create(:album) }
+  let(:album) { create(:album) }
+  let!(:songs) { create_list(:song, 10, album: album) }
   let(:id) { album.id }
 
   context 'when id is valid' do
@@ -28,7 +33,8 @@ RSpec.describe Resolvers::Album do
           'album' => including(
             'id' => album.id.to_s,
             'name' => album.name,
-            'coverImage' => album.cover_image
+            'coverImage' => album.cover_image,
+            'songs' => kind_of(Array)
           )
         )
       )
