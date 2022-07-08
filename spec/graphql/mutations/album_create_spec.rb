@@ -7,21 +7,24 @@ RSpec.describe Mutations::AlbumCreate do
 
   let(:query) do
     <<-QUERY
-      mutation AlbumCreate($name: String!, $coverImage: String!){
+      mutation AlbumCreate($name: String!, $year: Int, $coverImage: String!){
         albumCreate(
           input: {
             name: $name,
+            year: $year,
             coverImage: $coverImage
           }
         ) {
           id
           name
+          year
           coverImage
         }
       }
     QUERY
   end
   let(:name) { Faker::Music.album }
+  let(:year) { [1950..2020].sample }
   let(:cover_image) { Faker::Internet.url(path: '/cover.jpg') }
   let(:variables) do
     { name: name,
@@ -35,6 +38,7 @@ RSpec.describe Mutations::AlbumCreate do
         'albumCreate' => including(
           'id' => kind_of(String),
           'name' => name,
+          'year' => year,
           'coverImage' => cover_image
         )
       )

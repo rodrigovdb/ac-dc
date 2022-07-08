@@ -7,16 +7,18 @@ RSpec.describe Mutations::AlbumUpdate do
 
   let(:query) do
     <<-QUERY
-      mutation AlbumUpdate($id: ID!, $name: String!, $coverImage: String!){
+      mutation AlbumUpdate($id: ID!, $name: String!, $year: Int!, $coverImage: String!){
         albumUpdate(
           input: {
             id: $id,
             name: $name,
+            year: $year,
             coverImage: $coverImage
           }
         ) {
           id
           name
+          year
           coverImage
         }
       }
@@ -25,6 +27,7 @@ RSpec.describe Mutations::AlbumUpdate do
   let(:variables) do
     { id: id,
       name: name,
+      year: year,
       coverImage: cover_image }
   end
   let(:context) { {} }
@@ -32,6 +35,7 @@ RSpec.describe Mutations::AlbumUpdate do
   let(:album_attributes) { attributes_for(:album) }
   let(:id) { album.id }
   let(:name) { album_attributes[:name] }
+  let(:year) { album_attributes[:year] }
   let(:cover_image) { album_attributes[:cover_image] }
 
   context 'when id is valid' do
@@ -41,6 +45,7 @@ RSpec.describe Mutations::AlbumUpdate do
           'albumUpdate' => including(
             'id' => kind_of(String),
             'name' => name,
+            'year' => year,
             'coverImage' => cover_image
           )
         )

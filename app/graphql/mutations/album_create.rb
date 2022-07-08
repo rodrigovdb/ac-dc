@@ -8,6 +8,7 @@ module Mutations
     null true
 
     argument :name, String, required: true
+    argument :year, Int, required: true
     argument :cover_image, String, required: true
 
     def resolve(**params)

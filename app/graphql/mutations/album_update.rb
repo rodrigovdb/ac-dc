@@ -9,6 +9,7 @@ module Mutations
 
     argument :id, ID, required: true
     argument :name, String, required: true
+    argument :year, Int, required: true
     argument :cover_image, String, required: true
 
     def resolve(id:, **params)
