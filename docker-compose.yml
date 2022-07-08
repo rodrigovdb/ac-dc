@@ -1,13 +1,13 @@
 version: '3.1'
 
 networks:
-  zoom:
+  ac_dc:
 
 services:
   postgres:
     image: postgres:alpine
     networks:
-      zoom:
+      ac_dc:
         aliases:
           - postgres
     ports:
@@ -31,11 +31,9 @@ services:
     volumes:
       - .:/var/app
     networks:
-      zoom:
+      ac_dc:
         aliases:
           - web
 
 volumes:
   postgres_data:
-  zoom_nps_data:
-
