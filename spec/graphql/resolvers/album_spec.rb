@@ -11,6 +11,7 @@ RSpec.describe Resolvers::Album do
         album(id: $id) {
           id
           name
+          year
           coverImage
           songs {
             id
@@ -33,6 +34,7 @@ RSpec.describe Resolvers::Album do
           'album' => including(
             'id' => album.id.to_s,
             'name' => album.name,
+            'year' => album.year,
             'coverImage' => album.cover_image,
             'songs' => kind_of(Array)
           )

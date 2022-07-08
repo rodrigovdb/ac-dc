@@ -11,6 +11,7 @@ RSpec.describe Resolvers::Albums do
         albums {
           id
           name
+          year
           coverImage
         }
       }
