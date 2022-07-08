@@ -11,6 +11,7 @@ RSpec.describe Resolvers::Song do
         song(id: $id) {
           id
           name
+          sort
           album {
             id
             name
@@ -32,6 +33,7 @@ RSpec.describe Resolvers::Song do
           'song' => including(
             'id' => song.id.to_s,
             'name' => song.name,
+            'sort' => song.sort,
             'album' => including(
               'id' => album.id.to_s,
               'name' => album.name
