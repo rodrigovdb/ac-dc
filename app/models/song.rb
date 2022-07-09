@@ -27,7 +27,7 @@ class Song < ApplicationRecord
   private
 
   def define_sort
-    max_sort = album.songs&.order(sort: :desc)&.first&.sort || 0
+    max_sort = album.reload.songs.map(&:sort).sort.reverse.first || 0
 
     self.sort = max_sort + 1
   end
