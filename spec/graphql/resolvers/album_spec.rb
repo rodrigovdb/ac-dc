@@ -16,6 +16,8 @@ RSpec.describe Resolvers::Album do
           songs {
             id
             name
+            sort
+            duration
           }
         }
       }

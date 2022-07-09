@@ -12,6 +12,7 @@ RSpec.describe Resolvers::Song do
           id
           name
           sort
+          duration
           album {
             id
             name
@@ -34,6 +35,7 @@ RSpec.describe Resolvers::Song do
             'id' => song.id.to_s,
             'name' => song.name,
             'sort' => song.sort,
+            'duration' => TrackDuration.new(song.duration).to_s,
             'album' => including(
               'id' => album.id.to_s,
               'name' => album.name

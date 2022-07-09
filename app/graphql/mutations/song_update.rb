@@ -10,6 +10,7 @@ module Mutations
     argument :id, ID, required: true
     argument :album_id, String, required: true
     argument :name, String, required: true
+    argument :duration, String, required: true
 
     def resolve(id:, **params)
       song = ::Song.find(id)

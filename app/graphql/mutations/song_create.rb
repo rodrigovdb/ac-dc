@@ -8,6 +8,7 @@ module Mutations
 
     argument :album_id, String, required: true
     argument :name, String, required: true
+    argument :duration, String, required: true
 
     def resolve(**params)
       song = ::Song.new(params)

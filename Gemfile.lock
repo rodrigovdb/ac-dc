@@ -249,6 +249,7 @@ GEM
     strscan (3.0.3)
     thor (1.2.1)
     timeout (0.3.0)
+    track_duration (0.1.2)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.2.0)
@@ -284,6 +285,7 @@ DEPENDENCIES
   rubocop-rspec
   shoulda-matchers
   simplecov
+  track_duration
 
 RUBY VERSION
    ruby 3.0.3p157

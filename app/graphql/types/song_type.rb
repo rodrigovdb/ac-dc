@@ -6,7 +6,14 @@ module Types
     field :album, Types::AlbumType, null: false
     field :name, String
     field :sort, Int
+    field :duration, String
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+
+    def duration
+      return unless object.duration.present?
+
+      TrackDuration.new(object.duration)
+    end
   end
 end
