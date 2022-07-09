@@ -13,6 +13,7 @@ RSpec.describe Resolvers::Album do
           name
           year
           coverImage
+          totalDuration
           songs {
             id
             name
