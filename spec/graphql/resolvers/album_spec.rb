@@ -27,8 +27,19 @@ RSpec.describe Resolvers::Album do
   let(:context) { {} }
   let(:variables) { { id: id } }
   let(:album) { create(:album) }
-  let!(:songs) { create_list(:song, 10, album: album) }
   let(:id) { album.id }
+
+  context 'when album has no songs' do
+    it do
+      expect(response.to_h).to include(
+        'data' => including(
+          'album' => including(
+            'totalDuration' => '0:00'
+          )
+        )
+      )
+    end
+  end
 
   context 'when id is valid' do
     it do
@@ -47,6 +58,7 @@ RSpec.describe Resolvers::Album do
   end
 
   context 'when id is invalid' do
+    let!(:songs) { create_list(:song, 10, album: album) }
     let(:id) { 0 }
 
     it do
