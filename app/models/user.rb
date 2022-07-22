@@ -17,11 +17,10 @@ class User < ApplicationRecord
     user
   end
 
-  def token_information
-    Hash[
-      authorization_token: authorization_token,
-      expires_at: authorization_token_generated_at + TOKEN_EXPIRATION_TIME
-    ]
+  def access_token_expires_at
+    return unless authorization_token_generated_at.present?
+
+    authorization_token_generated_at + TOKEN_EXPIRATION_TIME
   end
 
   def generate_authorization_token
