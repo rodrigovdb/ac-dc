@@ -16,6 +16,12 @@ RSpec.describe User, type: :model do
 
     context 'whith valid credentials' do
       it { is_expected.to eq(user) }
+
+      it do
+        expect { authenticated_user }.to change { user.reload.authorization_token }
+          .from(nil)
+          .to(kind_of(String))
+      end
     end
 
     context 'with email does not exist' do
