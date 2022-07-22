@@ -7,6 +7,7 @@ ruby '3.0.3'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'bootsnap', require: false
+gem 'devise'
 gem 'dotenv-rails'
 gem 'graphiql-rails'
 gem 'graphql', '~> 2.0'
