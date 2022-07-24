@@ -9,10 +9,9 @@ RSpec.describe 'Sessions', type: :request do
     let(:password) { 'rapadura' }
     let(:auth_email) { email }
     let(:auth_password) { password }
-    let(:authorization) { "Basic #{Base64.encode64("#{auth_email}:#{auth_password}").strip}" }
 
     before do
-      post '/authenticate', headers: { 'Authorization' => authorization }
+      post '/authenticate', params: { email: auth_email, password: auth_password }
     end
 
     context 'with valid credentials' do

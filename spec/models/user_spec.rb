@@ -37,8 +37,8 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '#access_token_expires_at' do
-    subject(:access_token_expires_at) { user.access_token_expires_at&.to_datetime }
+  describe '#authorization_token_expires_at' do
+    subject(:authorization_token_expires_at) { user.authorization_token_expires_at&.to_datetime }
 
     context 'when authorization_token_generated_at is nil' do
       it { is_expected.to be_nil }

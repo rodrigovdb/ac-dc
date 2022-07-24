@@ -18,7 +18,7 @@ class User < ApplicationRecord
     user
   end
 
-  def access_token_expires_at
+  def authorization_token_expires_at
     return unless authorization_token_generated_at.present?
 
     authorization_token_generated_at + TOKEN_EXPIRATION_TIME

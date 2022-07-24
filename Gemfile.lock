@@ -119,6 +119,7 @@ GEM
     irb (1.4.1)
       reline (>= 0.3.0)
     json (2.6.2)
+    jwt (2.4.1)
     kwalify (0.7.2)
     loofah (2.18.0)
       crass (~> 1.0.2)
@@ -286,6 +287,7 @@ DEPENDENCIES
   faker
   graphiql-rails
   graphql (~> 2.0)
+  jwt
   pg
   pry
   pry-nav
