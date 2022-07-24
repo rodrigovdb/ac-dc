@@ -33,7 +33,5 @@ class User < ApplicationRecord
       authorization_token: token,
       authorization_token_generated_at: now
     )
-
-    token
   end
 end
