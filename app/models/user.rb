@@ -12,6 +12,7 @@ class User < ApplicationRecord
     user = User.find_by(email: email)
 
     return false unless user.present? && user&.valid_password?(password)
+
     user.generate_authorization_token
 
     user

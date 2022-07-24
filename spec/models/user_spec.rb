@@ -36,4 +36,23 @@ RSpec.describe User, type: :model do
       it { is_expected.to be_falsey }
     end
   end
+
+  describe '#access_token_expires_at' do
+    subject(:access_token_expires_at) { user.access_token_expires_at&.to_datetime }
+
+    context 'when authorization_token_generated_at is nil' do
+      it { is_expected.to be_nil }
+    end
+
+    context 'when authorization_token_generated_at is present' do
+      let(:now) { DateTime.current }
+      let(:generated_at) { now - 30.minutes }
+
+      before do
+        user.update(authorization_token_generated_at: generated_at)
+      end
+
+      xit { is_expected.to eq(generated_at + 1.hour) }
+    end
+  end
 end

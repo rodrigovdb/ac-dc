@@ -15,7 +15,7 @@ module Types
       seconds = object.songs.map { |song| TrackDuration.new(song.duration).seconds }.inject(:+)
 
       TrackDuration.new(seconds)
-    rescue
+    rescue StandardError
       '0:00'
     end
   end

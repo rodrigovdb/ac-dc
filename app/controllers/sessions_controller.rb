@@ -2,10 +2,8 @@
 
 class SessionsController < ApplicationController
   def create
-    render json: Hash[
-      authorization_token: user_by_basic_token.authorization_token,
-      expires_at: user_by_basic_token.access_token_expires_at
-    ]
+    render json: { authorization_token: user_by_basic_token.authorization_token,
+                   expires_at: user_by_basic_token.access_token_expires_at }
   end
 
   private
@@ -25,10 +23,10 @@ class SessionsController < ApplicationController
 
   def basic_token
     token = request
-      .headers['Authorization']
-      .scan(/^Basic\s(.+)/)
-      .flatten
-      .first
+            .headers['Authorization']
+            .scan(/^Basic\s(.+)/)
+            .flatten
+            .first
 
     raise AuthenticationError unless token.present?
 
