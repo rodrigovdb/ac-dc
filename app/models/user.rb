@@ -18,8 +18,14 @@ class User < ApplicationRecord
     user
   end
 
+  def valid_token?
+    return false if authorization_token_generated_at.nil?
+
+    authorization_token_expires_at > DateTime.current
+  end
+
   def authorization_token_expires_at
-    return unless authorization_token_generated_at.present?
+    return unless authorization_token_generated_at.present? && authorization_token.present?
 
     authorization_token_generated_at + TOKEN_EXPIRATION_TIME
   end
