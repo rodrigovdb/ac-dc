@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     response = { token: user.authorization_token, expires_at: user.authorization_token_expires_at }
     key = Rails.application.secrets.secret_key_base
 
-    JWT.encode(response, key)
+    JWT.encode(response, key, 'HS256')
   end
 
   def user
