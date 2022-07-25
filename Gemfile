@@ -49,6 +49,7 @@ group :development, :test do
   gem 'rubocop-rspec'
   gem 'shoulda-matchers'
   gem 'simplecov'
+  gem 'simplecov-json'
   gem 'timecop'
 end
 

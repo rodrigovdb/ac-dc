@@ -1,0 +1,47 @@
+name: Run tests
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      RAILS_ENV: test
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup ENV
+      run: cp .env_sample .env
+
+    - name: Setup test environment
+      run: docker-compose run --rm web rake db:setup
+
+    - name: Run tests
+      run: docker-compose run --rm web rspec
+
+    - name: Set coverage info
+      id: coverage
+      run: |
+        coverage=$(docker-compose run --rm web ruby ./bin/ci/coverage_checker.rb)
+        if (( $(echo "$coverage >= 90" |bc -l) )); then
+          conclusion=success
+          output='Coverage >= 90%'
+        else
+          conclusion=failure
+          output='Coverage < 90%'
+        fi
+        echo "::set-output name=conclusion::$conclusion"
+        echo "::set-output name=output::$output"
+        echo "::set-output name=summary::$coverage"
+
+    - name: Coverage action
+      uses: nunesmatheus/check-runs-action@v1
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        title: Test coverage
+        output-message: ${{ steps.coverage.outputs.output }}
+        conclusion: ${{ steps.coverage.outputs.conclusion }}
+        summary: ${{ steps.coverage.outputs.summary }}
+
