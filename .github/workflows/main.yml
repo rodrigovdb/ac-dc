@@ -9,10 +9,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy application
-        uses: actions/checkout@v2
-        uses: akhileshns/heroku-deploy@v3.12.12
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "ac-dc"
-          heroku_email: 'rodrigovdb@gmail.com'
+          heroku_email: "rodrigovdb@gmail.com"
+          usedocker: true
