@@ -8,14 +8,16 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable
 
-  def self.authenticate(email, password)
-    user = User.find_by(email: email)
+  class << self
+    def authenticate(email, password)
+      user = User.find_by(email: email)
 
-    return false unless user.present? && user&.valid_password?(password)
+      return false unless user.present? && user&.valid_password?(password)
 
-    user.generate_authorization_token
+      user.generate_authorization_token
 
-    user
+      user
+    end
   end
 
   def valid_token?
