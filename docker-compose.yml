@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  web:
+    tty: true
+    stdin_open: true
+    image: ac-dc-angular
+    build: .
+    ports:
+      - 4200:4200
+    volumes:
+      - .:/var/app
