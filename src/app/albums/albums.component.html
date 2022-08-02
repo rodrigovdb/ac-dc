@@ -1,0 +1,21 @@
+<ul>
+    <li *ngFor="let album of albums">
+        <button type="button" (click)="onSelect(album)">
+            {{album.name}}
+        </button>
+    </li>
+</ul>
+
+<div *ngIf="selectedAlbum">
+    <section>
+        <img alt="{{selectedAlbum.name}}" title="{{selectedAlbum.name}}" src={{selectedAlbum.coverImage}} />
+
+        <h1>{{selectedAlbum.name | uppercase}}</h1>
+        <h2>{{selectedAlbum.year}}</h2>
+        <h3>{{selectedAlbum.totalDuration}} Minutes</h3>
+    </section>
+
+    <section>
+        <h3>Songs</h3>
+    </section>
+</div>
