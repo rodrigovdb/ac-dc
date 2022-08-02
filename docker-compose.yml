@@ -8,5 +8,11 @@ services:
     build: .
     ports:
       - 4200:4200
-    # volumes:
-    #   - .:/var/app
+    volumes:
+      - .:/var/app
+      # A volume dedicated to node modules.
+      - /var/app/node_modules
+      # - node_modules:/var/app/node_modules
+
+# volumes:
+#   node_modules:
