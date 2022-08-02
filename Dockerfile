@@ -8,6 +8,10 @@ ENV INSTALL_PATH /var/app
 RUN mkdir -p $INSTALL_PATH
 WORKDIR $INSTALL_PATH
 
+COPY package.json $INSTALL_PATH/
+RUN npm install
+COPY . $INSTALL_PATH/
+
 EXPOSE 4200
 
 CMD ["ng", "serve", "--host", "0.0.0.0", "--port", "4200"]
