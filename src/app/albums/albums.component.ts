@@ -1,18 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Album } from '../interfaces/album';
-import {Apollo, gql} from 'apollo-angular';
-
-const GET_ALBUMS = gql`
-{
-  albums {
-    id
-    name
-    year
-    coverImage
-    totalDuration
-  }
-}
-`
+import { Apollo } from 'apollo-angular';
+import GET_ALBUMS from '../graphql/queries/getAlbums';
 
 @Component({
   selector: 'app-albums',
@@ -21,9 +10,7 @@ const GET_ALBUMS = gql`
 })
 
 export class AlbumsComponent implements OnInit {
-
   albums:Album[] = [];
-
   selectedAlbum?: Album;
 
   constructor(private apollo: Apollo) { }
