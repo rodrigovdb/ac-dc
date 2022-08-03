@@ -1,10 +1,6 @@
-<ul>
-    <li *ngFor="let album of albums">
-        <button type="button" (click)="onSelect(album)">
-            {{album.name}}
-        </button>
-    </li>
-</ul>
+<div *ngIf="loading" class="loading-container">
+    <img src="/assets/images/loading.gif" />
+</div>
 
 <div *ngIf="selectedAlbum">
     <section>
@@ -17,5 +13,21 @@
 
     <section>
         <h3>Songs</h3>
+        
+        <ul>
+            <li *ngFor="let song of songs">
+                <span>{{song.sort}}. </span>
+                <span>{{song.name}}</span>
+                <span>{{song.duration}}</span>
+            </li>
+        </ul>
     </section>
 </div>
+
+<ul>
+    <li *ngFor="let album of albums">
+        <button type="button" (click)="onSelect(album)">
+            {{album.name}}
+        </button>
+    </li>
+</ul>
