@@ -4,8 +4,13 @@
 }
 
 .albumsListItem{
-    a {
-        text-decoration: none;
-        color: #efefef;
+    padding: 20px;
+    h3 {
+        font-size: 18px;
+    }
+
+    h4 {
+        font-size: 14px;
+        font-weight: lighter;
     }
 }

@@ -39,5 +39,14 @@
         <h3 matLine>{{album.name}}</h3>
         <h4 matLine>{{album.year}}</h4>
 
+        <div>
+            <div>
+                {{album.songs.length}} songs
+            </div>
+
+            <div>
+                {{album.totalDuration}} Minutes
+            </div>
+        </div>
     </mat-list-item>
 </mat-action-list>
