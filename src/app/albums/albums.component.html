@@ -2,13 +2,13 @@
     <img src="/assets/images/loading.gif" />
 </div>
 
-<mat-card>
+<!-- <mat-card>
     <button mat-raised-button>Basic</button>
     <button mat-raised-button color="primary">Primary</button>
     <button mat-raised-button color="accent">Accent</button>
     <button mat-raised-button color="warn">Warn</button>
     <button mat-raised-button disabled>Disabled</button>
-</mat-card>
+</mat-card> -->
 
 <div *ngIf="selectedAlbum">
     <section>
@@ -32,10 +32,12 @@
     </section>
 </div>
 
-<ul>
-    <li *ngFor="let album of albums">
-        <button type="button" (click)="onSelect(album)">
-            {{album.name}}
-        </button>
-    </li>
-</ul>
+<mat-action-list>
+    <mat-list-item class="albumsListItem" *ngFor="let album of albums" (click)="onSelect(album)">
+        <img src={{album.coverImage}} matListAvatar alt={{album.name}}>
+
+        <h3 matLine>{{album.name}}</h3>
+        <h4 matLine>{{album.year}}</h4>
+
+    </mat-list-item>
+</mat-action-list>

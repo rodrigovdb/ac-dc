@@ -19,6 +19,11 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "src/assets/stylesheets"
+        ]
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

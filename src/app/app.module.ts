@@ -8,8 +8,10 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatButtonModule} from '@angular/material/button'; 
-import {MatCardModule} from '@angular/material/card'; 
+import { MatCardModule } from '@angular/material/card'; 
+import { MatButtonModule } from '@angular/material/button'; 
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider'; 
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {MatCardModule} from '@angular/material/card';
     BrowserAnimationsModule,
 
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatListModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

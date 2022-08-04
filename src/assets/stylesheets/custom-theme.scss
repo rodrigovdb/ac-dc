@@ -17,5 +17,8 @@ $ac-dc-angular-theme: mat.define-dark-theme((
 
 @include mat.all-component-themes($ac-dc-angular-theme);
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #303030;
+  color: #fff;
+}
