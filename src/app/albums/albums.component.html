@@ -36,17 +36,22 @@
     <mat-list-item class="albumsListItem" *ngFor="let album of albums" (click)="onSelect(album)">
         <img src={{album.coverImage}} matListAvatar alt={{album.name}}>
 
-        <h3 matLine>{{album.name}}</h3>
-        <h4 matLine>{{album.year}}</h4>
+        <span matLine class="itemName">
+            {{album.name}}
+        </span>
+
+        <span matLine class="itemYear">
+            {{album.year}}
+        </span>
 
         <div>
-            <div>
+            <span class="itemTotalSongs">
                 {{album.songs.length}} songs
-            </div>
+            </span>
 
-            <div>
+            <span class="itemTotalDuration">
                 {{album.totalDuration}} Minutes
-            </div>
+            </span>
         </div>
     </mat-list-item>
 </mat-action-list>
