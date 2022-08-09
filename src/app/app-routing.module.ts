@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AlbumsRoutes } from './albums/albums-routing.module';
+import { AuthRoutes } from './auth/auth-routing.module';
 
 const routes: Routes = [
   {
@@ -9,7 +10,8 @@ const routes: Routes = [
     redirectTo: '/albums',
     pathMatch: 'full'
   },
-  ...AlbumsRoutes
+  ...AlbumsRoutes,
+  ...AuthRoutes
 ];
 
 @NgModule({

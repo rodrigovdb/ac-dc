@@ -7,8 +7,14 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { SharedModule } from './shared/shared.module';
+import { MatToolbarModule } from '@angular/material/toolbar'; 
+import { MatIconModule } from '@angular/material/icon'; 
+import { MatButtonModule } from '@angular/material/button'; 
+import { MatMenuModule } from '@angular/material/menu'; 
+
 import { AlbumsModule } from './albums/albums.module';
+import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,8 +27,14 @@ import { AlbumsModule } from './albums/albums.module';
     HttpClientModule,
     BrowserAnimationsModule,
 
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+
+    AlbumsModule,
+    AuthModule,
     SharedModule,
-    AlbumsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
