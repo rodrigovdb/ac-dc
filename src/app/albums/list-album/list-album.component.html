@@ -1,4 +1,4 @@
-<a href="#" mat-raised-button [routerLink]="['/albums/new']">Add</a>
+<a href="#" mat-raised-button color="primary" [routerLink]="['/albums/new']">Add Album</a>
 
 <mat-action-list>
     <mat-list-item class="albumsListItem" *ngFor="let album of albums" (click)="onSelect(album)">
