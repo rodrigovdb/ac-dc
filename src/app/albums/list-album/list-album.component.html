@@ -1,0 +1,31 @@
+<mat-action-list>
+    <mat-list-item class="albumsListItem" *ngFor="let album of albums">
+        <img src={{album.coverImage}} matListAvatar alt={{album.name}}>
+
+        <span matLine class="itemName">
+            {{album.name}}
+        </span>
+
+        <span matLine class="itemYear">
+            {{album.year}}
+        </span>
+
+        <div>
+            <span class="itemTotalSongs">
+                <!--
+                {{album.songs.length}} songs
+                -->
+                10 songs
+            </span> 
+
+            <span class="itemTotalDuration">
+                <!--
+                {{album.totalDuration}} Minutes
+                -->
+                56:43 Minutes
+            </span>
+        </div>
+    </mat-list-item>
+</mat-action-list>
+
+<mat-card *ngIf="albums.length == 0">No albums found</mat-card>

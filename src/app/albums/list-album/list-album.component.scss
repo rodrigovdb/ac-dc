@@ -1,0 +1,28 @@
+.albumsListItem{
+    //border: solid 1px #f0f;
+
+    padding: 20px;
+
+    .itemName {
+        font-size: 18px;
+        padding: 3px;
+    }
+
+    .itemYear {
+        font-size: 14px;
+        padding: 3px;
+        font-weight: lighter;
+    }
+
+    .itemTotalSongs{
+        font-size: 13px;
+        padding: 3px;
+        display: block;
+    }
+
+    .itemTotalDuration{
+        font-size: 13px;
+        padding: 3px;
+        display: block;
+    }
+}

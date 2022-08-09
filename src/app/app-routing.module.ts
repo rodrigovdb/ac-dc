@@ -1,7 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { AlbumsRoutes } from './albums/albums-routing.module';
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '/albums',
+    pathMatch: 'full'
+  },
+  ...AlbumsRoutes
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
