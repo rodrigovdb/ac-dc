@@ -12,6 +12,7 @@ import { AlbumService } from '../services/album.service';
 })
 export class ShowAlbumComponent implements OnInit {
     album: Album = new Album();
+    loading: boolean = true;
 
   constructor(
     private albumService: AlbumService,
@@ -21,7 +22,12 @@ export class ShowAlbumComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.album = this.fetchAlbum();
+    const id = +this.route.snapshot.params['id'];
+    this.albumService.find(id).subscribe(({data, loading}) => {
+      this.loading = loading;
+      this.album = data.album;
+      console.log(data.album.songs[0])
+    })
   }
 
   currentUser(): Login | null {
@@ -39,7 +45,7 @@ export class ShowAlbumComponent implements OnInit {
 
   private fetchAlbum(): Album {
     const id = +this.route.snapshot.params['id'];
-    const album = this.albumService.find(id);
+    const album = this.albumService.findFromStorage(id);
     if(album == undefined){
       throw new Error(`Album ${id} does not exist`)
     }

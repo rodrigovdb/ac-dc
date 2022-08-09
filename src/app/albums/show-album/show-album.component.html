@@ -1,6 +1,17 @@
 <h1>Album details</h1>
 
-<mat-card class="albumShowCard">
+<div *ngIf="loading" class="loading-container">
+    <img src="/assets/images/loading.gif" />
+</div>
+
+<mat-card  *ngIf="currentUser()">
+    <mat-card-actions align="end">
+        <button mat-raised-button color="secondary" [routerLink]="['/albums', album.id, 'edit']">Edit</button>
+        <button mat-raised-button color="primary" (click)="destroy(album.id)">Destroy</button>
+    </mat-card-actions>
+</mat-card>
+
+<mat-card>
     <mat-card-title-group>
         <mat-card-title>
             <h1>{{album.name}}</h1>
@@ -13,13 +24,22 @@
 
         <img mat-card-xl-image src="{{album.coverImage}}" >
     </mat-card-title-group>
+</mat-card>
 
+<mat-card>
     <mat-card-content>
         <h3>Songs</h3>
-    </mat-card-content>
+        <mat-list>
+            <mat-list-item class="albumSongsList" *ngFor="let song of album.songs">
+                <span matLine class="itemName">
+                    {{song['sort']}}. {{song['name']}}
+                </span>
 
-    <mat-card-actions align="end" *ngIf="currentUser()">
-        <button mat-raised-button color="secondary" [routerLink]="['/albums', album.id, 'edit']">Edit</button>
-        <button mat-raised-button color="primary" (click)="destroy(album.id)">Destroy</button>
-    </mat-card-actions>
-  </mat-card>
+                <div>
+                    {{song['duration']}}
+                </div>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>

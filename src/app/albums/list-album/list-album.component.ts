@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { Router } from '@angular/router';
 
-import { AlbumService } from '../services/album.service';
 import { LoginService } from 'src/app/auth/services/login.service';
 import { Album, Login } from 'src/app/shared';
 import GET_ALBUMS from 'src/app/graphql/getAlbums';
@@ -17,7 +16,6 @@ export class ListAlbumComponent implements OnInit {
   loading: boolean = true;
 
   constructor(
-    private albumService: AlbumService,
     private loginService: LoginService,
     private apollo: Apollo,
     private router: Router

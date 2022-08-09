@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card'; 
 import { MatButtonModule } from '@angular/material/button'; 
-import {MatInputModule} from '@angular/material/input'; 
+import { MatDividerModule } from '@angular/material/divider'; 
+import { MatInputModule } from '@angular/material/input'; 
+import { MatListModule } from '@angular/material/list';
 
 import { AlbumService } from './services/album.service';
 import { ListAlbumComponent } from './list-album/list-album.component';
@@ -26,10 +27,11 @@ import { ShowAlbumComponent } from './show-album/show-album.component';
     FormsModule,
     RouterModule,
 
-    MatCardModule,
-    MatListModule,
     MatButtonModule,
+    MatCardModule,
+    MatDividerModule,
     MatInputModule,
+    MatListModule,
     /*
     MatDividerModule,
     MatChipsModule
