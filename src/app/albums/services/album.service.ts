@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 import { Album } from 'src/app/shared';
+import GET_ALBUMS from 'src/app/graphql/getAlbums';
 
 const LS_KEY: string = "albumsLocalStorage";
 
@@ -11,11 +13,11 @@ export class AlbumService {
 
   constructor() { }
 
-    find(id: number): Album | undefined {
-      const albums: Album[] = this.list();
+  find(id: number): Album | undefined {
+    const albums: Album[] = this.list();
 
-      return albums.find(album => album.id == id)
-    }
+    return albums.find(album => album.id == id)
+  }
 
   list(): Album[] {
     const albums = localStorage[LS_KEY];

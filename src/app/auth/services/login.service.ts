@@ -23,6 +23,8 @@ export class LoginService {
   login(login: Login): Observable<Login | null> {
     if(login.email == 'rodrigovdb@gmail.com' && login.password == 'rapadura'){
       login.token = 'my-token'
+      login.password = undefined
+      
       return of(login)
     }
     else{

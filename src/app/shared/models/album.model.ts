@@ -3,6 +3,8 @@ export class Album {
         public id?: number,
         public name?: string,
         public year?: number,
-        public coverImage?: string
+        public coverImage?: string,
+        public totalDuration?: string,
+        public songs?: []
     ){}
 }
