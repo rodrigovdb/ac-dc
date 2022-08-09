@@ -12,12 +12,14 @@ import { AlbumService } from './services/album.service';
 import { ListAlbumComponent } from './list-album/list-album.component';
 import { InsertAlbumComponent } from './insert-album/insert-album.component';
 import { EditAlbumComponent } from './edit-album/edit-album.component';
+import { ShowAlbumComponent } from './show-album/show-album.component';
 
 @NgModule({
   declarations: [
     ListAlbumComponent,
     InsertAlbumComponent,
-    EditAlbumComponent
+    EditAlbumComponent,
+    ShowAlbumComponent
   ],
   imports: [
     CommonModule,

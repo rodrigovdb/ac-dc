@@ -22,7 +22,7 @@ export class ListAlbumComponent implements OnInit {
   }
 
   onSelect(album: Album): void {
-    this.router.navigate(['/albums', album.id, 'edit'])
+    this.router.navigate(['/albums', album.id])
   }
 
   listAll(): Album[] {

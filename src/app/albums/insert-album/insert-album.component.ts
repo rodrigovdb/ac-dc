@@ -13,6 +13,7 @@ import { AlbumService } from '../services/album.service';
 export class InsertAlbumComponent implements OnInit {
   @ViewChild('formAlbum') formAlbum!: NgForm;
   album!: Album;
+  action: string = 'Create';
 
   constructor(
     private albumService: AlbumService,
