@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Apollo } from 'apollo-angular';
 import { Router } from '@angular/router';
 
 import { LoginService } from 'src/app/auth/services/login.service';
 import { Album, Login } from 'src/app/shared';
 import GET_ALBUMS from 'src/app/graphql/getAlbums';
+import { AlbumService } from '../services/album.service';
 
 @Component({
   selector: 'app-list-album',
@@ -17,18 +17,18 @@ export class ListAlbumComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
-    private apollo: Apollo,
+    private albumService: AlbumService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.apollo.watchQuery<any>({ query: GET_ALBUMS })
-      .valueChanges
-      .subscribe(({ data, loading }) => {
+    this
+      .albumService
+      .list()
+      .subscribe(({data, loading}) => {
         this.loading = loading;
         this.albums = data.albums;
-        //console.log(data.albums[0].songs.length)
-      });
+      })
   }
 
   currentUser(): Login {

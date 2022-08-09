@@ -23,11 +23,14 @@ export class ShowAlbumComponent implements OnInit {
 
   ngOnInit(): void {
     const id = +this.route.snapshot.params['id'];
-    this.albumService.find(id).subscribe(({data, loading}) => {
-      this.loading = loading;
-      this.album = data.album;
-      console.log(data.album.songs[0])
-    })
+
+    this
+      .albumService
+      .find(id)
+      .subscribe(({data, loading}) => {
+        this.loading = loading;
+        this.album = data.album;
+      })
   }
 
   currentUser(): Login | null {

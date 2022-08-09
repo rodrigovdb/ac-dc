@@ -29,6 +29,15 @@ export class AlbumService {
       .valueChanges;
   }
 
+  list(): Observable<any> {
+    return this
+      .apollo
+      .watchQuery<any>({
+        query: GET_ALBUMS
+      })
+      .valueChanges;
+  }
+
   findFromStorage(id: number): Album | undefined {
     const albums: Album[] = this.listFromStorage();
 
