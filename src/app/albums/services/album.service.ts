@@ -12,24 +12,15 @@ export class AlbumService {
   constructor() { }
 
     find(id: number): Album | undefined {
-    const albums: Album[] = this.list();
-    let album = albums.find(album => album.id === id)
-    if(album === undefined){
-      return undefined;
-    }
+      const albums: Album[] = this.list();
 
-    return new Album(album.id, album.name, album.year, album.coverImage)
-  }
+      return albums.find(album => album.id === id)
+    }
 
   list(): Album[] {
-    const str = localStorage[LS_KEY];
-    if(str === undefined){
-      return [];
-    }
+    const albums = localStorage[LS_KEY];
 
-    return JSON.parse(str).map(function(album:any) {
-      return new Album(album.id, album.name, album.year, album.coverImage)
-    })
+    return albums ? JSON.parse(albums) : [];
   }
 
   insert(album: Album): void {
