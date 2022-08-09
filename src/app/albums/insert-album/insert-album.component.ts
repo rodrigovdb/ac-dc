@@ -24,7 +24,6 @@ export class InsertAlbumComponent implements OnInit {
   }
 
   save(): void {
-    console.log("save")
     if(this.formAlbum.form.valid){
       this.albumService.insert(this.album)
       this.router.navigate(['/albums'])

@@ -14,7 +14,7 @@ export class AlbumService {
     find(id: number): Album | undefined {
       const albums: Album[] = this.list();
 
-      return albums.find(album => album.id === id)
+      return albums.find(album => album.id == id)
     }
 
   list(): Album[] {

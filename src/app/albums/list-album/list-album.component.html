@@ -1,7 +1,7 @@
 <a href="#" mat-raised-button [routerLink]="['/albums/new']">Add</a>
 
 <mat-action-list>
-    <mat-list-item class="albumsListItem" *ngFor="let album of albums">
+    <mat-list-item class="albumsListItem" *ngFor="let album of albums" (click)="onSelect(album)">
         <img src={{album.coverImage}} matListAvatar alt={{album.name}}>
 
         <span matLine class="itemName">

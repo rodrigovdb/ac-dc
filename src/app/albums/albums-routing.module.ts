@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
 
-import { InsertAlbumComponent } from './insert-album/insert-album.component';
 import { ListAlbumComponent } from './list-album/list-album.component';
+import { InsertAlbumComponent } from './insert-album/insert-album.component';
+import { EditAlbumComponent } from './edit-album/edit-album.component';
 
 export const AlbumsRoutes: Routes = [
     {
@@ -11,5 +12,9 @@ export const AlbumsRoutes: Routes = [
     {
         path: 'albums/new',
         component: InsertAlbumComponent
+    },
+    {
+        path: 'albums/:id/edit',
+        component: EditAlbumComponent
     }
 ];
