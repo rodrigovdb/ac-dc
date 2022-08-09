@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AlbumService } from '../services/album.service';
-import { Album } from 'src/app/shared/models/album.model';
+import { Album } from 'src/app/shared';
 
 @Component({
   selector: 'app-list-album',

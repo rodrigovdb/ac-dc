@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Album } from 'src/app/shared/models/album.model';
+import { Album } from 'src/app/shared';
 
 const LS_KEY: string = "albumsLocalStorage";
 
@@ -27,7 +27,6 @@ export class AlbumService {
     const albums = this.list();
 
     album.id = new Date().getTime();
-
     albums.push(album);
 
     localStorage[LS_KEY] = JSON.stringify(albums);
