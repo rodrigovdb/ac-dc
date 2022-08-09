@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from 'src/app/auth/services/login.service';
 
-import { Album } from 'src/app/shared';
+import { Album, Login } from 'src/app/shared';
 import { AlbumService } from '../services/album.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class ShowAlbumComponent implements OnInit {
 
   constructor(
     private albumService: AlbumService,
+    private loginService: LoginService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -22,8 +24,12 @@ export class ShowAlbumComponent implements OnInit {
     this.album = this.fetchAlbum();
   }
 
+  currentUser(): Login | null {
+    return this.loginService.currentUser;
+  }
+
   destroy(id: any): void {
-    if(confirm("Are you sure?")) {
+    if(this.currentUser() && confirm("Are you sure?")) {
       const album = this.fetchAlbum();
 
       this.albumService.delete(id);

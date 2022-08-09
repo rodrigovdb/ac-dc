@@ -1,3 +1,5 @@
+<h1>Album details</h1>
+
 <mat-card class="albumShowCard">
     <mat-card-title-group>
         <mat-card-title>
@@ -8,7 +10,6 @@
             <h3>10 Songs</h3>
             <h3>23:45 Minutes</h3>
         </mat-card-subtitle>
-        
 
         <img mat-card-xl-image src="{{album.coverImage}}" >
     </mat-card-title-group>
@@ -17,7 +18,7 @@
         <h3>Songs</h3>
     </mat-card-content>
 
-    <mat-card-actions align="end">
+    <mat-card-actions align="end" *ngIf="currentUser()">
         <button mat-raised-button color="secondary" [routerLink]="['/albums', album.id, 'edit']">Edit</button>
         <button mat-raised-button color="primary" (click)="destroy(album.id)">Destroy</button>
     </mat-card-actions>
