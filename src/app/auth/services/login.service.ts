@@ -10,7 +10,7 @@ const SESSION_KEY:string = 'albumsAppSession';
 export class LoginService {
   constructor() { }
 
-  public get currentUser(): Object {
+  public get currentUser(): Login {
     let user = sessionStorage[SESSION_KEY];
 
     return user ? JSON.parse(user) : null;
@@ -22,7 +22,7 @@ export class LoginService {
 
   login(login: Login): Observable<Login | null> {
     if(login.email == 'rodrigovdb@gmail.com' && login.password == 'rapadura'){
-      login.token = 'my-token'
+      login.token = 'b5956f67859d56ec734a40d8bfd0c40b'
       login.password = undefined
       
       return of(login)
