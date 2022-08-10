@@ -32,11 +32,17 @@
         <h3>Songs</h3>
         <mat-list>
             <mat-list-item class="albumSongsList" *ngFor="let song of album.songs">
-                <span matLine class="itemName">
+                <span matLine>
                     {{song['sort']}}. {{song['name']}}
                 </span>
 
                 <div>
+                    <button mat-icon-button color="primary" *ngIf="currentUser()" [routerLink]="['/albums', album.id, 'songs', song.id, 'edit']">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="primary" *ngIf="currentUser()">
+                        <mat-icon>delete</mat-icon>
+                    </button>
                     {{song['duration']}}
                 </div>
                 <mat-divider></mat-divider>

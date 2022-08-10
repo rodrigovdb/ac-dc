@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card'; 
 import { MatButtonModule } from '@angular/material/button'; 
 import { MatDividerModule } from '@angular/material/divider'; 
+import { MatIconModule } from '@angular/material/icon'; 
 import { MatInputModule } from '@angular/material/input'; 
 import { MatListModule } from '@angular/material/list';
 
@@ -30,6 +31,7 @@ import { ShowAlbumComponent } from './show-album/show-album.component';
     MatButtonModule,
     MatCardModule,
     MatDividerModule,
+    MatIconModule,
     MatInputModule,
     MatListModule,
     /*

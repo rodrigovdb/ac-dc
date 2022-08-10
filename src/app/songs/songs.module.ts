@@ -5,14 +5,17 @@ import { RouterModule } from '@angular/router';
 
 import { MatCardModule } from '@angular/material/card'; 
 import { MatButtonModule } from '@angular/material/button'; 
+import { MatIconModule } from '@angular/material/icon'; 
 import { MatInputModule } from '@angular/material/input';
 
 import { SongService } from './services/song.service';
 import { InsertSongComponent } from './insert-song/insert-song.component';
+import { EditSongComponent } from './edit-song/edit-song.component';
 
 @NgModule({
   declarations: [
-    InsertSongComponent
+    InsertSongComponent,
+    EditSongComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +24,7 @@ import { InsertSongComponent } from './insert-song/insert-song.component';
 
     MatCardModule,
     MatButtonModule,
+    MatIconModule,
     MatInputModule,
   ],
   providers: [

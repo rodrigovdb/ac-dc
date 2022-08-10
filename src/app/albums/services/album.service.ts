@@ -66,7 +66,6 @@ export class AlbumService {
   }
 
   update(album: Album): Observable<any> {
-    console.log(album)
     return this
       .apollo
       .mutate({
