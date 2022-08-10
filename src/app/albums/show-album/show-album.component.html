@@ -19,8 +19,8 @@
         </mat-card-title>
         <mat-card-subtitle>
             <h2>{{album.year}}</h2>
-            <h3>10 Songs</h3>
-            <h3>23:45 Minutes</h3>
+            <h3>{{album.songs?.length}} Songs</h3>
+            <h3>{{album.totalDuration}} Minutes</h3>
         </mat-card-subtitle>
 
         <img mat-card-xl-image src="{{album.coverImage}}" >
