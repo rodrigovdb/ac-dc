@@ -50,16 +50,4 @@ export class ShowAlbumComponent implements OnInit {
         })
     }
   }
-
-  deleteSong(id: any): void {
-    if(this.currentUser() && confirm("Are you sure?")) {
-      this
-        .songService
-        .delete(id)
-        .subscribe(({ data, loading }) => {
-          this.loading = loading;
-          this.router.navigate(['/albums', this.album.id])
-        })
-    }
-  }
 }

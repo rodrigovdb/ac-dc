@@ -1,12 +1,9 @@
-<div *ngIf="loading" class="loading-container">
-    <img src="https://github.com/rodrigovdb/ac-dc/blob/master/src/assets/images/loading.gif?raw=true" />
-</div>
+<h3>Songs</h3>
 
 <mat-card>
     <mat-card-content>
-        <h3>Songs</h3>
         <mat-list>
-            <mat-list-item class="albumSongsList" *ngFor="let song of songs">
+            <mat-list-item class="albumSongsList" *ngFor="let song of album.songs">
                 <span matLine>
                     {{song['sort']}}. {{song['name']}}
                 </span>

@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { AlbumService } from 'src/app/albums/services/album.service';
 import { LoginService } from 'src/app/auth/services/login.service';
 import { Album, Login, Song } from 'src/app/shared';
 import { SongService } from '../services/song.service';
@@ -12,29 +11,15 @@ import { SongService } from '../services/song.service';
   styleUrls: ['./list-songs.component.scss']
 })
 export class ListSongsComponent implements OnInit {
-  songs: Song[] = []
-  album!: Album;
-  loading: boolean = true;
+  @Input() album : Album = new Album();
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
-    private albumService: AlbumService,
     private loginService: LoginService,
     private songService: SongService
   ) { }
 
   ngOnInit(): void {
-    const albumId = this.route.snapshot.params['albumId'];
-
-    this
-      .albumService
-      .find(albumId)
-      .subscribe(({data, loading}) => {
-        this.loading = loading;
-        this.album = data.album;
-        this.songs = data.album.songs;
-      })
   }
 
   currentUser(): Login | null {
@@ -47,7 +32,6 @@ export class ListSongsComponent implements OnInit {
         .songService
         .delete(id)
         .subscribe(({ data, loading }) => {
-          this.loading = loading;
           this.router.navigate(['/albums', this.album.id])
         })
     }
