@@ -7,6 +7,7 @@ import GET_ALBUMS from 'src/app/graphql/getAlbums';
 import GET_ALBUM from 'src/app/graphql/getAlbum';
 import CREATE_ALBUM from 'src/app/graphql/createAlbum';
 import DELETE_ALBUM from 'src/app/graphql/deleteAlbum';
+import UPDATE_ALBUM from 'src/app/graphql/updateAlbum';
 
 const LS_KEY: string = "albumsLocalStorage";
 
@@ -64,6 +65,21 @@ export class AlbumService {
       })
   }
 
+  update(album: Album): Observable<any> {
+    console.log(album)
+    return this
+      .apollo
+      .mutate({
+        mutation: UPDATE_ALBUM,
+        variables: {
+          id: album.id,
+          name: album.name,
+          year: album.year,
+          coverImage: album.coverImage
+        }
+      })
+  }
+
   findFromStorage(id: number): Album | undefined {
     const albums: Album[] = this.listFromStorage();
 
@@ -81,19 +97,6 @@ export class AlbumService {
 
     album.id = new Date().getTime();
     albums.push(album);
-
-    localStorage[LS_KEY] = JSON.stringify(albums);
-  }
-
-  update(album: Album): void {
-    const albums = this.listFromStorage();
-
-    /// override the informed element
-    albums.forEach((currentElement, index, elementsList) => {
-      if(album.id === currentElement.id) {
-        elementsList[index] = album;
-      }
-    });
 
     localStorage[LS_KEY] = JSON.stringify(albums);
   }

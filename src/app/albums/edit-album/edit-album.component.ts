@@ -14,6 +14,7 @@ export class EditAlbumComponent implements OnInit {
   @ViewChild('formAlbum') formAlbum!: NgForm;
   album: Album = new Album();
   action: string = 'Edit';
+  loading: boolean = true;
 
   constructor(
     private albumService: AlbumService,
@@ -23,18 +24,31 @@ export class EditAlbumComponent implements OnInit {
 
   ngOnInit(): void {
     const id = +this.route.snapshot.params['id'];
-    const album = this.albumService.findFromStorage(id);
-    if(album == undefined){
-      throw new Error(`Album ${id} does not exist`)
-    }
 
-    this.album = album;
+    this
+      .albumService
+      .find(id)
+      .subscribe(({data, loading}) => {
+        this.loading = loading;
+        this.album = new Album(
+          data.album.id,
+          data.album.name,
+          data.album.year,
+          data.album.coverImage,
+          data.album.totalDuration,
+          data.album.songs
+        );
+      })
   }
 
   save(): void {
     if(this.formAlbum.form.valid){
-      this.albumService.update(this.album)
-      this.router.navigate(['/albums'])
+      this
+        .albumService
+        .update(this.album)
+        .subscribe(({data, loading}) => {
+          this.router.navigate(['/albums'])
+        })
     }
   }
 }
