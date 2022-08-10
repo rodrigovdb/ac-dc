@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
-import { ApolloClientOptions, ApolloLink, InMemoryCache } from '@apollo/client/core';
+import { ApolloClientOptions, ApolloLink, DefaultOptions, InMemoryCache } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
 import { HttpLink } from 'apollo-angular/http';
 
 import { environment } from './../environments/environment';
 import { LoginService } from './auth/services/login.service';
 import { Login } from './shared';
-import { HttpClient, HttpHandler } from '@angular/common/http';
 
 const uri = `${environment.apiUrl}/graphql`
 
@@ -35,9 +34,23 @@ function link(httpLink: HttpLink): any{
 }
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
+  const defaultOptions: DefaultOptions = {
+    watchQuery: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'ignore',
+    },
+    query: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'all',
+    },
+  }
+
   return {
     link: link(httpLink),
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+      resultCaching: false
+    }),
+    defaultOptions: defaultOptions
   };
 }
 
