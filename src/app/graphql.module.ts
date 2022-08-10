@@ -4,14 +4,15 @@ import { ApolloClientOptions, ApolloLink, InMemoryCache } from '@apollo/client/c
 import { setContext } from '@apollo/client/link/context';
 import { HttpLink } from 'apollo-angular/http';
 
+import { environment } from './../environments/environment';
 import { LoginService } from './auth/services/login.service';
 import { Login } from './shared';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
-const uri = 'https://ac-dc.herokuapp.com/graphql'; // <-- add the URL of the GraphQL server here
+const uri = `${environment.apiUrl}/graphql`
 
 function link(httpLink: HttpLink): any{
-  const service: LoginService = new LoginService()
-  const currentUser: Login = service.currentUser
+  const currentUser: Login = LoginService.getCurrentUser()
 
   if(currentUser == null) {
     return httpLink.create({ uri })

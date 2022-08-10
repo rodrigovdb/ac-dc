@@ -2,6 +2,11 @@
     width: 400px;
     margin: 100px auto;
 
+    .error {
+        margin-top: 20px;
+        color: #ff1744;;
+    }
+
     mat-form-field{
         width: 100%;
         margin: 10px 0px;

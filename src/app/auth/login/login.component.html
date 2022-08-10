@@ -2,6 +2,8 @@
     <mat-card>
         <mat-card-title>.: Login</mat-card-title>
 
+        <div class="error" color="primary" *ngIf="message">{{message}}</div>
+
         <mat-form-field>
             <mat-label>e-mail</mat-label>
             <input type="text" matInput class="form-control" id="email" name="email"
@@ -16,7 +18,7 @@
             <input type="password" matInput  class="form-control" id="password" name="password"
             [(ngModel)]="login.password" #password="ngModel" required />
             <mat-error *ngIf="password.errors?.['required']">
-                Year
+                password is required
             </mat-error>
         </mat-form-field>
         

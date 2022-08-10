@@ -1,14 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+
+import { Observable, of, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { JwtHelperService } from "@auth0/angular-jwt";
+
+import { environment } from 'src/environments/environment';
 import { Login } from 'src/app/shared';
 
 const SESSION_KEY:string = 'albumsAppSession';
+const BASE_URL:string = `${environment.apiUrl}/authenticate`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient
+  ) {}
+
+  static getCurrentUser(): Login {
+    let user = sessionStorage[SESSION_KEY];
+
+    return user ? JSON.parse(user) : null;
+  }
 
   public get currentUser(): Login {
     let user = sessionStorage[SESSION_KEY];
@@ -16,20 +30,20 @@ export class LoginService {
     return user ? JSON.parse(user) : null;
   }
 
-  public set currentUser(user: Object) {
-    sessionStorage[SESSION_KEY] = JSON.stringify(user);
+  public set currentUser(login: Login) {
+    const helper = new JwtHelperService();
+    const decodedToken = helper.decodeToken(login.token)
+    login.token = decodedToken.token
+
+    sessionStorage[SESSION_KEY] = JSON.stringify(login);
   }
 
-  login(login: Login): Observable<Login | null> {
-    if(login.email == 'rodrigovdb@gmail.com' && login.password == 'rapadura'){
-      login.token = 'b5956f67859d56ec734a40d8bfd0c40b'
-      login.password = undefined
-      
-      return of(login)
-    }
-    else{
-      return of(null)
-    }
+  login(login: Login): Observable<any | never> {
+    const params = { email: login.email, password: login.password }
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+    return this
+      .httpClient
+      .post<any>(BASE_URL, params, httpOptions)
   }
 
   logout(): void {

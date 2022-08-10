@@ -35,13 +35,16 @@ export class LoginComponent implements OnInit {
 
   authenticate(): void {
     if(this.formLogin.valid){
-      this.loginService.login(this.login).subscribe((user) => {
-        if(user != null){
-          this.loginService.currentUser = user;
+      this.loginService.login(this.login).subscribe({
+        next: (user) => {
+          this.login.token = user.token;
+          this.loginService.currentUser = this.login;
+
           this.loading = false;
           this.router.navigate(['/albums'])
-        }
-        else{
+        },
+        error: (value) => {
+          console.log(value)
           this.loading = false;
           this.message = 'Invalid email / password'
         }
