@@ -79,25 +79,4 @@ export class AlbumService {
         }
       })
   }
-
-  findFromStorage(id: number): Album | undefined {
-    const albums: Album[] = this.listFromStorage();
-
-    return albums.find(album => album.id == id)
-  }
-
-  listFromStorage(): Album[] {
-    const albums = localStorage[LS_KEY];
-
-    return albums ? JSON.parse(albums) : [];
-  }
-
-  insertToStorage(album: Album): void {
-    const albums = this.listFromStorage();
-
-    album.id = new Date().getTime();
-    albums.push(album);
-
-    localStorage[LS_KEY] = JSON.stringify(albums);
-  }
 }

@@ -1,3 +1,5 @@
+import { Song } from "./song.model";
+
 export class Album {
     constructor(
         public id?: number,
@@ -5,6 +7,6 @@ export class Album {
         public year?: number,
         public coverImage?: string,
         public totalDuration?: string,
-        public songs?: []
+        public songs?: Song[]
     ){}
 }

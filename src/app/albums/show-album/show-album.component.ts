@@ -48,14 +48,4 @@ export class ShowAlbumComponent implements OnInit {
         })
     }
   }
-
-  private fetchAlbum(): Album {
-    const id = +this.route.snapshot.params['id'];
-    const album = this.albumService.findFromStorage(id);
-    if(album == undefined){
-      throw new Error(`Album ${id} does not exist`)
-    }
-
-    return album;
-  }
 }

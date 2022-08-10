@@ -10,6 +10,7 @@ const GET_ALBUMS = gql`
     totalDuration
     songs {
       id
+      albumId
       name
       sort
       duration

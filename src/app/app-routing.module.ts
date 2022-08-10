@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AlbumsRoutes } from './albums/albums-routing.module';
 import { AuthRoutes } from './auth/auth-routing.module';
+import { SongsRoutes } from './songs/songs-routing.module';
 
 const routes: Routes = [
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   ...AlbumsRoutes,
-  ...AuthRoutes
+  ...AuthRoutes,
+  ...SongsRoutes,
 ];
 
 @NgModule({

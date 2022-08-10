@@ -15,6 +15,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AlbumsModule } from './albums/albums.module';
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
+import { SongsModule } from './songs/songs.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { SharedModule } from './shared/shared.module';
     AlbumsModule,
     AuthModule,
     SharedModule,
+    SongsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,42 @@
+<div *ngIf="loading" class="loading-container">
+    <img src="https://github.com/rodrigovdb/ac-dc/blob/master/src/assets/images/loading.gif?raw=true" />
+</div>
+
+<form #formSong="ngForm" id="formSong">
+    <mat-card>
+        <mat-card-title>{{action}} Song</mat-card-title>
+
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input type="text" matInput id="name" name="name" minlength="3" required="required"
+                placeholder="High Voltage" #name="ngModel" [(ngModel)]="song.name">
+            <mat-error *ngIf="name.errors?.['required']">
+                Name is required
+            </mat-error>
+            <mat-error *ngIf="name.errors?.['minlength']">
+                Name should have at lest 2 chars
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Duration</mat-label>
+            <input type="text" matInput id="duration" name="duration" pattern="^\d{2}:\d{2}" required="required"
+                placeholder="04:14" #duration="ngModel" [(ngModel)]="song.duration">
+            <mat-error *ngIf="duration.errors?.['required']">
+                Duration is required
+            </mat-error>
+            <mat-error *ngIf="duration.errors?.['pattern']">
+                Duration is invalid
+            </mat-error>
+        </mat-form-field>
+        
+        <mat-card-actions align="end">
+            <button mat-raised-button color="primary" (click)="save()">
+                Save
+            </button>
+            <a href="#" mat-raised-button color="secondary" [routerLink]="['/albums', song.albumId]">
+                Cancel
+            </a>
+        </mat-card-actions>
+    </mat-card>
+</form>
