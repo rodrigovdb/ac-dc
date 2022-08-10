@@ -39,10 +39,13 @@ export class ShowAlbumComponent implements OnInit {
 
   destroy(id: any): void {
     if(this.currentUser() && confirm("Are you sure?")) {
-      const album = this.fetchAlbum();
-
-      this.albumService.delete(id);
-      this.router.navigate(['/albums'])
+      this
+        .albumService
+        .delete(id)
+        .subscribe(({data, loading}) => {
+          this.loading = loading;
+          this.router.navigate(['/albums'])
+        })
     }
   }
 

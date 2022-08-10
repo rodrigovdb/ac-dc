@@ -6,6 +6,7 @@ import { Album } from 'src/app/shared';
 import GET_ALBUMS from 'src/app/graphql/getAlbums';
 import GET_ALBUM from 'src/app/graphql/getAlbum';
 import CREATE_ALBUM from 'src/app/graphql/createAlbum';
+import DELETE_ALBUM from 'src/app/graphql/deleteAlbum';
 
 const LS_KEY: string = "albumsLocalStorage";
 
@@ -52,6 +53,17 @@ export class AlbumService {
       })
   }
 
+  delete(id: number): Observable<any> {
+    return this
+      .apollo
+      .mutate({
+        mutation: DELETE_ALBUM,
+        variables: {
+          id: id
+        }
+      })
+  }
+
   findFromStorage(id: number): Album | undefined {
     const albums: Album[] = this.listFromStorage();
 
@@ -85,14 +97,4 @@ export class AlbumService {
 
     localStorage[LS_KEY] = JSON.stringify(albums);
   }
-
-  delete(id: number): void {
-    let albums = this.listFromStorage();
-
-    /// reject the element with the informed id
-    albums = albums.filter(album => album.id !== id)
-
-    localStorage[LS_KEY] = JSON.stringify(albums);
-  }
-
 }
