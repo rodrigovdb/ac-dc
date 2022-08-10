@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button'; 
 import { MatDividerModule } from '@angular/material/divider'; 
 import { MatIconModule } from '@angular/material/icon'; 
-import { MatInputModule } from '@angular/material/input'; 
+import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 
 import { AlbumService } from './services/album.service';
@@ -16,28 +16,28 @@ import { InsertAlbumComponent } from './insert-album/insert-album.component';
 import { EditAlbumComponent } from './edit-album/edit-album.component';
 import { ShowAlbumComponent } from './show-album/show-album.component';
 
+import { SongsModule } from '../songs/songs.module';
+
 @NgModule({
   declarations: [
     ListAlbumComponent,
     InsertAlbumComponent,
     EditAlbumComponent,
-    ShowAlbumComponent
+    ShowAlbumComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-
+    
     MatButtonModule,
     MatCardModule,
     MatDividerModule,
     MatIconModule,
     MatInputModule,
     MatListModule,
-    /*
-    MatDividerModule,
-    MatChipsModule
-    */
+
+    SongsModule
   ],
   providers: [
     AlbumService

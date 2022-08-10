@@ -1,0 +1,27 @@
+<div *ngIf="loading" class="loading-container">
+    <img src="https://github.com/rodrigovdb/ac-dc/blob/master/src/assets/images/loading.gif?raw=true" />
+</div>
+
+<mat-card>
+    <mat-card-content>
+        <h3>Songs</h3>
+        <mat-list>
+            <mat-list-item class="albumSongsList" *ngFor="let song of songs">
+                <span matLine>
+                    {{song['sort']}}. {{song['name']}}
+                </span>
+
+                <div>
+                    <button mat-icon-button color="primary" *ngIf="currentUser()" [routerLink]="['/albums', song.albumId, 'songs', song.id, 'edit']">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="primary" *ngIf="currentUser()" (click)="destroy(song.id)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    {{song['duration']}}
+                </div>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>
