@@ -14,6 +14,7 @@ export class InsertAlbumComponent implements OnInit {
   @ViewChild('formAlbum') formAlbum!: NgForm;
   album!: Album;
   action: string = 'Create';
+  loading: boolean = false;
 
   constructor(
     private albumService: AlbumService,
@@ -26,8 +27,12 @@ export class InsertAlbumComponent implements OnInit {
 
   save(): void {
     if(this.formAlbum.form.valid){
-      this.albumService.insert(this.album)
-      this.router.navigate(['/albums'])
+      this
+        .albumService
+        .insert(this.album)
+        .subscribe(({data, loading}) => {
+          this.router.navigate(['/albums'])
+        })
     }
   }
 }
