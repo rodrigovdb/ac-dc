@@ -8,6 +8,10 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+if User.count.zero?
+  User.create(email: 'rodrigovdb@gmail.com', password: 'rapadura')
+end
+
 if Album.count.zero?
   album_01 = Album.create(name: 'High Voltage', cover_image: 'https://upload.wikimedia.org/wikipedia/en/f/fc/Acdc_high_voltage_international_album.jpg', year: 1976)
   Song.create(album: album_01, name: "It's a Long Way to the Top (If You Wanna Rock 'n' Roll)", duration: '5:01')
