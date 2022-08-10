@@ -1,3 +1,7 @@
+<div *ngIf="loading" class="loading-container">
+    <img src="https://github.com/rodrigovdb/ac-dc/blob/master/src/assets/images/loading.gif?raw=true" />
+</div>
+
 <form #formAlbum="ngForm" id="formAlbum">
     <mat-card>
         <mat-card-title>{{action}} Album</mat-card-title>
