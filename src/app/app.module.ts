@@ -3,21 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AlbumsComponent } from './albums/albums.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatCardModule } from '@angular/material/card'; 
+import { MatToolbarModule } from '@angular/material/toolbar'; 
+import { MatIconModule } from '@angular/material/icon'; 
 import { MatButtonModule } from '@angular/material/button'; 
-import { MatListModule } from '@angular/material/list';
-import { MatDividerModule } from '@angular/material/divider';
-import {MatChipsModule} from '@angular/material/chips'; 
+import { MatMenuModule } from '@angular/material/menu'; 
+
+import { AlbumsModule } from './albums/albums.module';
+import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AlbumsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -26,11 +27,14 @@ import {MatChipsModule} from '@angular/material/chips';
     HttpClientModule,
     BrowserAnimationsModule,
 
+    MatToolbarModule,
+    MatIconModule,
     MatButtonModule,
-    MatCardModule,
-    MatListModule,
-    MatDividerModule,
-    MatChipsModule
+    MatMenuModule,
+
+    AlbumsModule,
+    AuthModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

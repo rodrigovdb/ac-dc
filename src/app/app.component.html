@@ -1,8 +1,25 @@
-<header>
-    <h1>{{title}}</h1>
-</header>
+<mat-toolbar>
+    <span><a href="#">{{title}}</a></span>
+    <span class="example-spacer"></span>
 
-<app-albums></app-albums>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" *ngIf="currentUser()">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item aria-label="Add Album" [routerLink]="['/albums/new']">
+          <mat-icon>add</mat-icon>
+          <span>Add Album</span>
+        </button>
+        <button mat-menu-item aria-label="Logout" (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+        </button>
+      </mat-menu>
+</mat-toolbar>
+
+<div class="app-content">
+    <router-outlet></router-outlet>
+</div>
 
 <footer>
     By <a href="https://github.com/rodrigovdb">@rodrigovdb</a>

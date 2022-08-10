@@ -1,0 +1,51 @@
+<form #formAlbum="ngForm" id="formAlbum">
+    <mat-card>
+        <mat-card-title>{{action}} Album</mat-card-title>
+
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input type="text" matInput id="name" name="name" minlength="3" required="required"
+                placeholder="High Voltage" #name="ngModel" [(ngModel)]="album.name">
+            <mat-error *ngIf="name.errors?.['required']">
+                Name is required
+            </mat-error>
+            <mat-error *ngIf="name.errors?.['minlength']">
+                Name should have at lest 2 chars
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Year</mat-label>
+            <input type="number" matInput id="year" name="year" min="1976" required="required"
+                placeholder="1976" #year="ngModel" [(ngModel)]="album.year">
+            <mat-error *ngIf="year.errors?.['required']">
+                Year
+            </mat-error>
+            <mat-error *ngIf="year.errors?.['min']">
+                Year should start with 1976
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Cover Image</mat-label>
+            <input type="url" matInput id="coverImage" name="coverImage" minlength="3" required="required"
+                placeholder="https://www.google.com/images" #coverImage="ngModel" [(ngModel)]="album.coverImage" />
+            <mat-error *ngIf="coverImage.errors?.['required']">
+                Cover Image is required
+            </mat-error>
+        </mat-form-field>
+
+        <div class="imagePreview" *ngIf="coverImage.value">
+            <img src={{coverImage.value}} />
+        </div>
+        
+        <mat-card-actions align="end">
+            <button mat-raised-button color="primary" (click)="save()">
+                Save
+            </button>
+            <a href="#" mat-raised-button color="secondary" [routerLink]="['/albums']">
+                Cancel
+            </a>
+        </mat-card-actions>
+    </mat-card>
+</form>

@@ -1,0 +1,31 @@
+<form #formLogin="ngForm" id="formLogin">
+    <mat-card>
+        <mat-card-title>.: Login</mat-card-title>
+
+        <div class="error" color="primary" *ngIf="message">{{message}}</div>
+
+        <mat-form-field>
+            <mat-label>e-mail</mat-label>
+            <input type="text" matInput class="form-control" id="email" name="email"
+                [(ngModel)]="login.email" #email="ngModel" required />
+            <mat-error *ngIf="email.errors?.['required']">
+                e-mail is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input type="password" matInput  class="form-control" id="password" name="password"
+            [(ngModel)]="login.password" #password="ngModel" required />
+            <mat-error *ngIf="password.errors?.['required']">
+                password is required
+            </mat-error>
+        </mat-form-field>
+        
+        <mat-card-actions align="end">
+            <button mat-raised-button color="primary" (click)="authenticate()">
+                Login
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</form>
