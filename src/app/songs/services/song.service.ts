@@ -6,6 +6,7 @@ import { Song } from 'src/app/shared';
 import CREATE_SONG from 'src/app/graphql/createSong';
 import GET_SONG from 'src/app/graphql/getSong';
 import UPDATE_SONG from 'src/app/graphql/updateSong';
+import DELETE_SONG from 'src/app/graphql/deleteSong';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +42,6 @@ export class SongService {
       })
   }
 
-
   update(song: Song): Observable<any> {
     return this
       .apollo
@@ -52,6 +52,17 @@ export class SongService {
           albumId: String(song.albumId),
           name: song.name,
           duration: song.duration
+        }
+      })
+  }
+
+  delete(id: number): Observable<any> {
+    return this
+      .apollo
+      .mutate({
+        mutation: DELETE_SONG,
+        variables: {
+          id: id
         }
       })
   }

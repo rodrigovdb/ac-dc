@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from 'src/app/auth/services/login.service';
 
 import { Album, Login } from 'src/app/shared';
+import { SongService } from 'src/app/songs/services/song.service';
 import { AlbumService } from '../services/album.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class ShowAlbumComponent implements OnInit {
   constructor(
     private albumService: AlbumService,
     private loginService: LoginService,
+    private songService: SongService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -45,6 +47,18 @@ export class ShowAlbumComponent implements OnInit {
         .subscribe(({data, loading}) => {
           this.loading = loading;
           this.router.navigate(['/albums'])
+        })
+    }
+  }
+
+  deleteSong(id: any): void {
+    if(this.currentUser() && confirm("Are you sure?")) {
+      this
+        .songService
+        .delete(id)
+        .subscribe(({ data, loading }) => {
+          this.loading = loading;
+          this.router.navigate(['/albums', this.album.id])
         })
     }
   }

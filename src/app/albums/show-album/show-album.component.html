@@ -40,7 +40,7 @@
                     <button mat-icon-button color="primary" *ngIf="currentUser()" [routerLink]="['/albums', album.id, 'songs', song.id, 'edit']">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button color="primary" *ngIf="currentUser()">
+                    <button mat-icon-button color="primary" *ngIf="currentUser()" (click)="deleteSong(song.id)">
                         <mat-icon>delete</mat-icon>
                     </button>
                     {{song['duration']}}
