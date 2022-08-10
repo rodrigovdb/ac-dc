@@ -1,0 +1,24 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$ac-dc-angular-primary: mat.define-palette(mat.$red-palette, 900, 800, 700);
+$ac-dc-angular-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$ac-dc-angular-warn: mat.define-palette(mat.$red-palette, A400);
+
+$ac-dc-angular-theme: mat.define-dark-theme((
+  color: (
+    primary: $ac-dc-angular-primary,
+    accent: $ac-dc-angular-accent,
+    warn: $ac-dc-angular-warn,
+  )
+));
+
+@include mat.all-component-themes($ac-dc-angular-theme);
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #303030;
+  color: #fff;
+}
