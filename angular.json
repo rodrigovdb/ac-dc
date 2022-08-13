@@ -29,7 +29,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/ac-dc-angular",
-            "index": "src/index.html",
+            "index": "src/index.local.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
@@ -46,6 +46,7 @@
           },
           "configurations": {
             "production": {
+              "index": "src/index.html",
               "budgets": [
                 {
                   "type": "initial",
@@ -62,11 +63,7 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
-                },
-                {
-                  "replace": "src/index.html",
-                  "with": "src/index.prod.html"
-                },
+                }
               ],
               "outputHashing": "all"
             },
